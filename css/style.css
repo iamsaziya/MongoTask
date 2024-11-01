@@ -79,3 +79,18 @@ form {
     border: 1.5px solid #bbb3b3;
   }
 }
+
+form button{
+ background-color: darkseagreen;
+
+}
+
+button:hover{
+  background-color: #3e8e41;
+  font-size: 1.2rem;
+ }
+
+.login-img img{
+  height: 30rem;
+  
+}
