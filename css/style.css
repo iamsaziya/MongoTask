@@ -81,7 +81,7 @@ form {
 }
 
 form button{
- background-color: darkseagreen;
+ background-color: #fff;
 
 }
 
@@ -91,6 +91,7 @@ button:hover{
  }
 
 .login-img img{
-  height: 30rem;
-  
+  height: 40rem;
+  margin-left: 10rem;
+
 }
