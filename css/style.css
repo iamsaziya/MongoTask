@@ -165,6 +165,7 @@ main {
   width: 100%;
   /* height: 100%; */
   margin-left:5rem;
+
 }
 
 nav {
@@ -182,6 +183,10 @@ main ul {
   justify-content: center;
   vertical-align: middle;
 
+}
+main nav{
+  position: fixed;
+  z-index: 99999;
 }
 
 main nav h2 {
@@ -223,9 +228,10 @@ main nav {
 /* Card Container Style start */
 .card_container {
   height: 100%;
+  width: 100%;
   padding: 4rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns:29.5rem 29.5rem 29.5rem;
   gap: 2.5rem;
 }
 
@@ -270,6 +276,23 @@ main nav {
 
 .assignees p {
   margin-left: 0.51rem;
+}
+
+.wrapper{
+  display: flex !important;
+  width: 100% ;
+  padding: 0;
+  position: relative;
+  margin-top: 7rem;
+}
+
+.information{
+  width: 30rem;
+  background-color: #fff;
+  position: fixed;
+  right: 0;
+  padding: 2rem;
+  height: 100%;
 }
 
 /* Responsive Design */
