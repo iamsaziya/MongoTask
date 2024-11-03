@@ -164,7 +164,7 @@ li {
 main {
   width: 100%;
   /* height: 100%; */
-  margin-left:5rem;
+  margin-left: 5rem;
 
 }
 
@@ -184,7 +184,8 @@ main ul {
   vertical-align: middle;
 
 }
-main nav{
+
+main nav {
   position: fixed;
   z-index: 99999;
 }
@@ -231,7 +232,7 @@ main nav {
   width: 100%;
   padding: 4rem;
   display: grid;
-  grid-template-columns:29.5rem 29.5rem 29.5rem;
+  grid-template-columns: 29.5rem 29.5rem 29.5rem;
   gap: 2.5rem;
 }
 
@@ -278,21 +279,63 @@ main nav {
   margin-left: 0.51rem;
 }
 
-.wrapper{
+.wrapper {
   display: flex !important;
-  width: 100% ;
+  width: 100%;
   padding: 0;
   position: relative;
   margin-top: 7rem;
 }
 
-.information{
+.information {
   width: 30rem;
   background-color: #fff;
   position: fixed;
   right: 0;
   padding: 2rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.user_greets {
+  height: 10rem;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_greets h3 {
+  font-size: 2.5rem;
+}
+
+.user_avatar {
+  display: block;
+  height: 8rem;
+  width: 8rem;
+  background-color: #eee;
+  border: 0.1rem solid #ccc;
+  border-radius: 50%;
+}
+
+.infos {
+  display: flex;
+  flex-wrap: wrap; 
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  & div {
+    min-height: 2rem;
+    font-size: 1.5rem;
+    width: 50%;
+    padding: 1rem;
+    border-left: 0.2rem solid #F9A823;
+    margin-top: 1rem;
+  }
 }
 
 /* Responsive Design */
