@@ -18,8 +18,11 @@ html {
   scroll-behavior: smooth;
   font-size: 10px;
 }
+body{
+  background-color: #eee;
+}
 
-/* login sytles */
+/* login styles Start */
 .header {
   padding: 2.5rem 5rem;
   background-color: beige;
@@ -27,7 +30,6 @@ html {
 .header h1 {
   font-size: 3rem;
   font-weight: bold;
-  /* margin-top: 2rem; */
 }
 .container {
   width: 100%;
@@ -39,7 +41,6 @@ html {
 .login-wrapper {
   display: flex;
   flex-direction: column;
-  /* place-content: cent; */
   align-items: center;
   justify-content: center;
   height: 40rem;
@@ -80,14 +81,21 @@ form {
   }
 }
 
-form button{
+form > button{
  background-color: #fff;
-
+ border-color: #F9A826;
 }
 
-button:hover{
-  background-color: #3e8e41;
-  font-size: 1.2rem;
+.primary-btn{
+  background-color: #F9A826;
+  font-size: 1.5rem;
+  color:#fff;
+  font-weight: 400;
+  transition: all .1s linear;
+  &:hover{
+    outline: 2px solid #ff9d00 !important;
+    box-shadow: 1px 1px 10px #F9A823, -1px -1px 10px #F9A823
+  }
  }
 
 .login-img img{
@@ -96,3 +104,30 @@ button:hover{
 
 }
 
+/* login styles End */
+/* SideBar style start */
+aside{
+  background-color: #fff;
+  width: 5%;
+  height: 100vh;
+  padding: 1rem;
+  & nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding:0.5rem;
+    & ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+    }
+  }
+}
+
+nav ul  li {
+  height: 50px;
+  list-style-type:none;
+}
