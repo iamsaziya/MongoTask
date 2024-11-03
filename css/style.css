@@ -1,25 +1,34 @@
 @import url("./fonts.css");
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-input:focus{
-    outline: none;
+input:focus {
+  outline: none;
 }
 
-button{
-    cursor: pointer;
+span {
+  vertical-align: middle;
+}
+
+button {
+  cursor: pointer;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 10px;
 }
-body{
+
+body {
   background-color: #eee;
+  display: flex;
+  /* gap: 2rem; */
 }
 
 /* login styles Start */
@@ -27,10 +36,12 @@ body{
   padding: 2.5rem 5rem;
   background-color: beige;
 }
+
 .header h1 {
   font-size: 3rem;
   font-weight: bold;
 }
+
 .container {
   width: 100%;
   height: calc(90vh - 2.5rem);
@@ -38,6 +49,7 @@ body{
   display: flex;
   place-content: center;
 }
+
 .login-wrapper {
   display: flex;
   flex-direction: column;
@@ -81,24 +93,25 @@ form {
   }
 }
 
-form > button{
- background-color: #fff;
- border-color: #F9A826;
+form>button {
+  background-color: #fff;
+  border-color: #F9A826;
 }
 
-.primary-btn{
+.primary-btn {
   background-color: #F9A826;
   font-size: 1.5rem;
-  color:#fff;
+  color: #fff;
   font-weight: 400;
   transition: all .1s linear;
-  &:hover{
+
+  &:hover {
     outline: 2px solid #ff9d00 !important;
     box-shadow: 1px 1px 10px #F9A823, -1px -1px 10px #F9A823
   }
- }
+}
 
-.login-img img{
+.login-img img {
   height: 40rem;
   margin-left: 10rem;
 
@@ -106,28 +119,168 @@ form > button{
 
 /* login styles End */
 /* SideBar style start */
-aside{
+header aside {
   background-color: #fff;
-  width: 5%;
+  width: 7rem;
   height: 100vh;
+  position: fixed;
   padding: 1rem;
-  & nav{
+
+  & nav {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding:0.5rem;
+    padding: 0.5rem;
+    height: 100%;
+
+    & a {
+      color: #F9A823;
+    }
+
     & ul {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      
+
     }
   }
 }
 
-nav ul  li {
-  height: 50px;
-  list-style-type:none;
+a {
+  display: block;
+  padding: 1rem;
+}
+
+li {
+  height: 5rem;
+  list-style: none !important;
+}
+
+/* SideBar style End */
+
+/*Menu bar style start*/
+main {
+  width: 100%;
+  /* height: 100%; */
+  margin-left:5rem;
+}
+
+nav {
+  width: 100%;
+  min-height: 7rem;
+  padding: 1rem;
+  background: #fff;
+  flex-wrap: wrap;
+}
+
+main nav,
+main ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+
+}
+
+main nav h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+
+  & a {
+    text-decoration: none;
+    color: #444;
+  }
+}
+
+li input {
+  border-radius: 2rem;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0;
+}
+
+.searchLi {
+  position: relative;
+
+}
+
+.searchLi span {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #999;
+}
+
+main nav {
+  justify-content: space-between;
+}
+
+/*Menu bar style end*/
+
+/* Card Container Style start */
+.card_container {
+  height: 100%;
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.card {
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 2rem;
+  border: 1px solid #ccc;
+  padding-bottom: 0;
+}
+
+.card_header {
+  padding: 1rem;
+
+}
+
+.card_title {
+  font-size: 2rem;
+}
+
+.card_body {
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+
+.assignees {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+}
+
+.card_footer span {
+  display: block;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: #eee;
+  border: 0.1rem solid #ccc;
+  margin-left: -1rem;
+
+}
+
+.assignees p {
+  margin-left: 0.51rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .card_container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .card_container {
+    grid-template-columns: 1fr;
+  }
 }
