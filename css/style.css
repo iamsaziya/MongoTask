@@ -119,13 +119,18 @@ form>button {
 
 /* login styles End */
 /* SideBar style start */
+header aside nav li:first-child{
+  font-size: 1.7rem;
+  margin-top: 1rem;
+  color: #444;
+}
 header aside {
   background-color: #fff;
   width: 7rem;
   height: 100vh;
   position: fixed;
   padding: 1rem;
-
+z-index: 999999;
   & nav {
     display: flex;
     flex-direction: column;
@@ -164,15 +169,14 @@ li {
 main {
   width: 100%;
   /* height: 100%; */
-  margin-left: 5rem;
-
+  /* margin-left: 5rem; */
 }
 
 nav {
   width: 100%;
   min-height: 7rem;
-  padding: 1rem;
-  background: #fff;
+
+  /* background: #fff; */
   flex-wrap: wrap;
 }
 
@@ -182,9 +186,17 @@ main ul {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-
 }
+main .nav {
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  vertical-align: middle;
 
+  background-color: #fff;
+}
 main nav {
   position: fixed;
   z-index: 99999;
@@ -193,7 +205,7 @@ main nav {
 main nav h2 {
   font-size: 2.5rem;
   font-weight: bold;
-
+  margin-left: 8rem;
   & a {
     text-decoration: none;
     color: #444;
@@ -220,9 +232,6 @@ li input {
   color: #999;
 }
 
-main nav {
-  justify-content: space-between;
-}
 
 /*Menu bar style end*/
 
@@ -234,6 +243,8 @@ main nav {
   display: grid;
   grid-template-columns: 29.5rem 29.5rem 29.5rem;
   gap: 2.5rem;
+  padding-left: 9rem;
+  margin-top: 4rem;
 }
 
 .card {
@@ -337,6 +348,122 @@ main nav {
     margin-top: 1rem;
   }
 }
+
+/* filter styles */
+.task_filter{
+  height: 5rem;
+  width: 100%;
+  margin-top:1rem;
+  margin-left: 10rem;
+  display: flex;
+
+  /* align-items: center; */
+  /* align-self: start; */
+  /* justify-content:space-between; */
+  gap:3rem;
+}
+
+.form_group{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  width:10rem;
+  gap: 0.5rem;
+}
+
+.task_filter label{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.task_filter select{
+  border: none;
+  background-color: transparent;
+}
+.task_filter:focus{
+  outline: none;
+}
+
+/* Analytics styles Start */
+.analytics{
+  margin-top: 10rem;
+  width:90%;
+  margin-left: 10rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.1);
+}
+
+.metric-title {
+  color: #666;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.metric-value {
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.metric-change {
+  font-size: 1.4rem;
+  color: #666;
+}
+
+.positive {
+  color: #22c55e;
+}
+
+.negative {
+  color: #ef4444;
+}
+
+.chart-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.1);
+  width: 80rem;
+}
+
+.conversion-metrics {
+  background: white;
+  width: 40rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+.conversion-item {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversion-label {
+  color: #666;
+}
+
+.conversion-value {
+  font-weight: bold;
+}
+/* Analytics styles End */
+
+
 
 /* Responsive Design */
 @media (max-width: 991px) {
