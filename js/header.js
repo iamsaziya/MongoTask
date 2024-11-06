@@ -1,9 +1,10 @@
-export const setSideBar = () => {
-    document.querySelector("#sidebar").innerHTML = `
+const setSideBar = () => {
+  document.querySelector("#sidebar").innerHTML = `
      <header>
     <aside>
       <nav>
         <ul>
+        <li><h2>MT</h2></li>
           <li><a href=""><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                   width="24px" fill="currentColor">
                   <path
@@ -36,22 +37,101 @@ export const setSideBar = () => {
     `
 }
 
-export const setHeader = () => {
-    document.querySelector("#header").innerHTML = `   <nav>
-      <h2> <a href="#">MongoTask</a></h2>
-      <ul>
-        <li class="searchLi"> <input type="search" placeholder="Search" /> <span><svg xmlns="http://www.w3.org/2000/svg"
-              height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-              <path
-                d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
-            </svg></span> </li>
+const setHeader = () => {
+  let isFilter = document.querySelector("#header").getAttribute('data-filter');
+  let html = `<nav>
+        <div class="nav">
+          <h2><a href="#">MongoTask</a></h2>
+          <ul>
+            <li class="searchLi">
+              <input type="search" placeholder="Search" />
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+                  />
+                </svg>
+              </span>
+            </li>
+  
+            <li>
+              <a href="">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M200-200q-17 0-28.5-11.5T160-240q0-17 11.5-28.5T200-280h40v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h40q17 0 28.5 11.5T800-240q0 17-11.5 28.5T760-200H200Zm280-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"
+                    />
+                  </svg>
+                  </span>
+                </a>
+            </li>
+          </ul>
+        </div>
+      `
+  if (isFilter) {
+    html += `<div id="filter" class="task_filter">
+          <div class="form_group">
+            <label for="label">Label</label>
+            <select name="label" id="label">
+              <option value="inprogress">In Progress</option>
+              <option value="done">Done</option>
+              <option value="pending">Pending</option>
+            </select>
+            
+          </div>
 
+          <div class="form_group">
+            <label for="label">Category</label>
+            <select name="label" id="label">
+              <option value="inprogress">Internal</option>
+              <!-- <option value="done">Done</option>
+              <option value="pending">Pending</option> -->
+            </select>
+            
+          </div>
 
-        <li><a href=""><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                fill="currentColor">
-                <path
-                  d="M200-200q-17 0-28.5-11.5T160-240q0-17 11.5-28.5T200-280h40v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h40q17 0 28.5 11.5T800-240q0 17-11.5 28.5T760-200H200Zm280-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z" />
-              </svg></span></a></li>
-      </ul>
-    </nav>`
+          <div class="form_group">
+            <label for="label">Sort</label>
+            <select name="label" id="label">
+              <option value="inprogress">By Activity</option>
+              <option value="done">By A-Z </option>
+              <option value="pending">By Z-A</option>
+            </select>
+            
+          </div>
+        </div>`
+
+    html += "</nav>"
+  }
+
+  html += "</nav>"
+  document.getElementById("header").innerHTML = html;
 }
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > 100) {
+    // Scrolling down
+    document.getElementById("filter").classList.add("hidden");
+  } else {
+    // Scrolling up
+    document.getElementById("filter").classList.remove("hidden");
+  }
+  lastScroll = currentScroll;
+});
+// Initialize UI for sidebar and header
+setSideBar()
+setHeader()
