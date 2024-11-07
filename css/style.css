@@ -562,6 +562,9 @@ li input {
 }
 /* Analytics styles End */
 
+/* Calender styles Start */
+
+/* Calender styles End */
 
 
 /* Responsive Design */
@@ -574,5 +577,26 @@ li input {
 @media (max-width: 767px) {
   .card_container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .parent {
+   display: flex;
+   flex-wrap: wrap;
+  }
+  .chart-container{
+    height: 30rem;
+    width: 30rem;
+  }
+  .card-chart{
+    width: 29rem;
+    margin-bottom: 30rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .metrics-grid {
+  width: 29rem;
   }
 }

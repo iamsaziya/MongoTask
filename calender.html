@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar UI</title>
+       <!-- Material Icons -->
+       <link
+       rel="stylesheet"
+       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search"
+     />
+ 
+     <!-- Custom CSS -->
+     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <style>
+      .material-symbols-rounded {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        width: 256px;
+        background-color: white;
+        padding: 20px;
+        border-right: 1px solid #e1e3e6;
+      }
+
+      .create-button {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid #e1e3e6;
+        border-radius: 24px;
+        padding: 12px 24px;
+        cursor: pointer;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .create-button:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .create-button span {
+        margin-left: 8px;
+        font-size: 14px;
+      }
+
+      .mini-calendar {
+        margin: 20px 0;
+        padding: 10px;
+        
+      }
+
+      .mini-calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .mini-calendar-title {
+        font-size: 14px;
+        color: #3c4043;
+      }
+
+      .mini-calendar-nav {
+        display: flex;
+        gap: 8px;
+      }
+
+      .mini-calendar-nav button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 50%;
+      }
+
+      .mini-calendar-nav button:hover {
+        background-color: #f1f3f4;
+      }
+
+      .mini-calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+      }
+
+      .mini-calendar-weekday {
+        font-size: 11px;
+        color: #70757a;
+        text-align: center;
+        padding: 4px 0;
+      }
+
+      .mini-calendar-day {
+        font-size: 12px;
+        color: #3c4043;
+        text-align: center;
+        padding: 6px 0;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .mini-calendar-day:hover {
+        background-color: #f1f3f4;
+      }
+
+      .mini-calendar-day.current {
+        background-color: #1a73e8;
+        color: white;
+      }
+
+      .mini-calendar-day.selected {
+        background-color: #d2e3fc;
+      }
+
+      .main-content {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .calendar-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 8px;
+      }
+
+      .calendar-nav {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .nav-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+      }
+
+      .nav-button:hover {
+        background-color: #f1f3f4;
+      }
+
+      .current-date {
+        font-size: 22px;
+        font-weight: 400;
+        margin-left: 16px;
+      }
+
+      .calendar-grid {
+        border: 1px solid #e1e3e6;
+        background: white;
+      }
+
+      .week-header {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        border-bottom: 1px solid #e1e3e6;
+      }
+
+      .week-day {
+        padding: 8px;
+        text-align: center;
+        font-size: 11px;
+        color: #70757a;
+        text-transform: uppercase;
+      }
+
+      .calendar-days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .calendar-cell {
+        border-right: 1px solid #e1e3e6;
+        border-bottom: 1px solid #e1e3e6;
+        min-height: 100px;
+        padding: 8px;
+      }
+
+      .cell-header {
+        text-align: right;
+        color: #70757a;
+        font-size: 12px;
+      }
+
+      .current-day {
+        color: #1a73e8;
+        font-weight: bold;
+      }
+
+      .holiday {
+        background-color: #e8f5e9;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #1b5e20;
+        margin-top: 4px;
+      }
+
+      .event {
+        background-color: #e8f0fe;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #174ea6;
+        margin-top: 4px;
+      }
+
+      .sidebar-section {
+        margin-top: 20px;
+      }
+
+      .sidebar-title {
+        font-size: 14px;
+        color: #5f6368;
+        margin-bottom: 8px;
+      }
+
+      .sidebar-item {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .sidebar-item:hover {
+        background-color: #f1f3f4;
+      }
+
+      .sidebar-item input[type="checkbox"] {
+        margin-right: 8px;
+      }
+
+      .time-slots {
+        position: relative;
+        margin-top: 40px;
+      }
+
+      .time-slot {
+        border-top: 1px solid #e1e3e6;
+        height: 60px;
+        display: flex;
+        align-items: start;
+      }
+
+      .time-label {
+        width: 50px;
+        font-size: 10px;
+        color: #70757a;
+        text-align: right;
+        padding-right: 8px;
+        transform: translateY(-8px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sidebar"></div>
+    <main>
+      <div id="header"></div>
+    <div class="container">
+      <div class="sidebar">
+        <button class="create-button">
+          <i data-lucide="plus"></i>
+          <span>Create</span>
+        </button>
+
+        <div class="mini-calendar">
+          <div class="mini-calendar-header">
+            <span class="mini-calendar-title">November 2024</span>
+            <div class="mini-calendar-nav">
+              <button><i data-lucide="chevron-left" size="14"></i></button>
+              <button><i data-lucide="chevron-right" size="14"></i></button>
+            </div>
+          </div>
+          <div class="mini-calendar-grid">
+            <div class="mini-calendar-weekday">S</div>
+            <div class="mini-calendar-weekday">M</div>
+            <div class="mini-calendar-weekday">T</div>
+            <div class="mini-calendar-weekday">W</div>
+            <div class="mini-calendar-weekday">T</div>
+            <div class="mini-calendar-weekday">F</div>
+            <div class="mini-calendar-weekday">S</div>
+
+            <div class="mini-calendar-day">27</div>
+            <div class="mini-calendar-day">28</div>
+            <div class="mini-calendar-day">29</div>
+            <div class="mini-calendar-day">30</div>
+            <div class="mini-calendar-day">31</div>
+            <div class="mini-calendar-day">1</div>
+            <div class="mini-calendar-day">2</div>
+
+            <div class="mini-calendar-day">3</div>
+            <div class="mini-calendar-day">4</div>
+            <div class="mini-calendar-day">5</div>
+            <div class="mini-calendar-day">6</div>
+            <div class="mini-calendar-day current">7</div>
+            <div class="mini-calendar-day">8</div>
+            <div class="mini-calendar-day">9</div>
+
+            <div class="mini-calendar-day">10</div>
+            <div class="mini-calendar-day">11</div>
+            <div class="mini-calendar-day">12</div>
+            <div class="mini-calendar-day">13</div>
+            <div class="mini-calendar-day">14</div>
+            <div class="mini-calendar-day">15</div>
+            <div class="mini-calendar-day">16</div>
+
+            <div class="mini-calendar-day">17</div>
+            <div class="mini-calendar-day">18</div>
+            <div class="mini-calendar-day">19</div>
+            <div class="mini-calendar-day">20</div>
+            <div class="mini-calendar-day">21</div>
+            <div class="mini-calendar-day">22</div>
+            <div class="mini-calendar-day">23</div>
+
+            <div class="mini-calendar-day">24</div>
+            <div class="mini-calendar-day">25</div>
+            <div class="mini-calendar-day">26</div>
+            <div class="mini-calendar-day">27</div>
+            <div class="mini-calendar-day">28</div>
+            <div class="mini-calendar-day">29</div>
+            <div class="mini-calendar-day">30</div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-item">
+            <input type="checkbox" checked />
+            <span>Saziya Ansari</span>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" checked />
+            <span>Birthdays</span>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" checked />
+            <span>Tasks</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">Other calendars</div>
+          <div class="sidebar-item">
+            <input type="checkbox" checked />
+            <span>Holidays in India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="calendar-header">
+          <div class="calendar-nav">
+            <button class="nav-button">
+              <i data-lucide="chevron-left"></i>
+            </button>
+            <button class="nav-button">
+              <i data-lucide="chevron-right"></i>
+            </button>
+            <h2 class="current-date">November 2024</h2>
+          </div>
+        </div>
+
+        <div class="calendar-grid">
+          <div class="week-header">
+            <div class="week-day">Sun</div>
+            <div class="week-day">Mon</div>
+            <div class="week-day">Tue</div>
+            <div class="week-day">Wed</div>
+            <div class="week-day">Thu</div>
+            <div class="week-day">Fri</div>
+            <div class="week-day">Sat</div>
+          </div>
+
+          <div class="calendar-days">
+            <div class="calendar-cell">
+              <div class="cell-header">3</div>
+              <div class="holiday">Bhai Duj</div>
+              <div class="event">AtoZ Travel Daily Huddle</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="cell-header">4</div>
+              <div class="event">AtoZ Travel Daily Huddle</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="cell-header">5</div>
+              <div class="event">AtoZ Travel Daily Huddle</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="cell-header">6</div>
+              <div class="event">AtoZ Travel Daily Huddle</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="cell-header current-day">7</div>
+              <div class="holiday">Chhat Puja (Pratihar Sashthi)</div>
+              <div class="event">AtoZ Travel Daily Huddle</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="cell-header">8</div>
+              <div class="event">AtoZ Travel Daily Huddle</div>
+            </div>
+            <div class="calendar-cell">
+              <div class="cell-header">9</div>
+              <div class="event">AtoZ Travel Daily Huddle</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="time-slots">
+          <div class="time-slot">
+            <div class="time-label">8 AM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">9 AM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">10 AM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">11 AM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">12 PM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">1 PM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">2 PM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">3 PM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">4 PM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">5 PM</div>
+          </div>
+          <div class="time-slot">
+            <div class="time-label">6 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Current date
+      const currentDate = new Date();
+      let selectedDate = currentDate;
+
+      // Mini calendar functionality
+      const miniCalendarDays = document.querySelectorAll(".mini-calendar-day");
+      miniCalendarDays.forEach((day) => {
+        day.addEventListener("click", () => {
+          // Remove selected class from all days
+          miniCalendarDays.forEach((d) => d.classList.remove("selected"));
+          // Add selected class to clicked day
+          day.classList.add("selected");
+
+          // Update main calendar view (in a real app, this would update the main calendar)
+          console.log(`Selected date: ${day.textContent}`);
+        });
+      });
+
+      // Navigation buttons functionality
+      const navButtons = document.querySelectorAll(
+        ".nav-button, .mini-calendar-nav button"
+      );
+      navButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          // Determine if it's next or previous
+          const isNext = e.currentTarget.querySelector(
+            '[data-lucide="chevron-right"]'
+          );
+
+          // Update the date (in a real app, this would update both calendars)
+          if (isNext) {
+            console.log("Navigate to next month");
+          } else {
+            console.log("Navigate to previous month");
+          }
+        });
+      });
+
+      // Create button functionality
+      const createButton = document.querySelector(".create-button");
+      createButton.addEventListener("click", () => {
+        console.log("Open create event modal");
+      });
+
+      // Calendar checkbox functionality
+      const calendarCheckboxes = document.querySelectorAll(
+        '.sidebar-item input[type="checkbox"]'
+      );
+      calendarCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", (e) => {
+          const calendarName = e.currentTarget.nextElementSibling.textContent;
+          console.log(`${calendarName} visibility: ${e.currentTarget.checked}`);
+        });
+      });
+
+      // Helper function to format date
+      function formatDate(date) {
+        const options = { year: "numeric", month: "long" };
+        return date.toLocaleDateString("en-US", options);
+      }
+
+      // Helper function to get day of month
+      function getDayOfMonth(date) {
+        return date.getDate();
+      }
+
+      // Function to generate calendar days
+      function generateCalendarDays(year, month) {
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const startingDay = firstDay.getDay();
+        const totalDays = lastDay.getDate();
+
+        // Generate previous month's days
+        const prevMonthLastDay = new Date(year, month, 0).getDate();
+        const prevMonthDays = Array.from({ length: startingDay }, (_, i) => ({
+          day: prevMonthLastDay - startingDay + i + 1,
+          isPrevMonth: true,
+        }));
+
+        // Generate current month's days
+        const currentMonthDays = Array.from({ length: totalDays }, (_, i) => ({
+          day: i + 1,
+          isCurrentMonth: true,
+        }));
+
+        // Generate next month's days
+        const remainingDays =
+          42 - (prevMonthDays.length + currentMonthDays.length);
+        const nextMonthDays = Array.from({ length: remainingDays }, (_, i) => ({
+          day: i + 1,
+          isNextMonth: true,
+        }));
+
+        return [...prevMonthDays, ...currentMonthDays, ...nextMonthDays];
+      }
+
+      // Function to update the mini calendar
+      function updateMiniCalendar(year, month) {
+        const days = generateCalendarDays(year, month);
+        const miniCalendarDays =
+          document.querySelectorAll(".mini-calendar-day");
+
+        days.forEach((day, index) => {
+          const dayElement = miniCalendarDays[index];
+          dayElement.textContent = day.day;
+          dayElement.className = "mini-calendar-day";
+
+          if (day.isPrevMonth || day.isNextMonth) {
+            dayElement.style.color = "#70757a";
+          }
+
+          if (
+            day.isCurrentMonth &&
+            day.day === currentDate.getDate() &&
+            month === currentDate.getMonth() &&
+            year === currentDate.getFullYear()
+          ) {
+            dayElement.classList.add("current");
+          }
+        });
+      }
+
+      // Initialize calendar with current date
+      const currentMonth = currentDate.getMonth();
+      const currentYear = currentDate.getFullYear();
+      updateMiniCalendar(currentYear, currentMonth);
+
+      // Update date displays
+      document.querySelector(".mini-calendar-title").textContent =
+        formatDate(currentDate);
+      document.querySelector(".current-date").textContent =
+        formatDate(currentDate);
+    </script>
+     <script src="js/main.js"></script>
+     <script src="js/header.js"></script>
+  </body>
+</html>
