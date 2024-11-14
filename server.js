@@ -16,7 +16,6 @@ app.use("/users", require("./routes/users.js"));
 app.use("/projects", require("./routes/projects.js"));
 app.use("/projects/:projectId/tasks", require("./routes/tasks.js"));
 
-
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
