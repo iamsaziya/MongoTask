@@ -6,23 +6,34 @@ const { saveUserToDb } = require("../lib/db");
 const router = express.Router();
 router.use(express.static(path.join(__dirname, "../src")));
 // Route to serve the login.html file
-router.all("/login", (req, res) => {
-  if ((req.method = "POST")) {
-    if (validate(req.body, userSchema)) {
-      saveUserToDb(req.body)
-        .then(() => {
-          res.status(201).send({ message: "User created successfully" });
-          // res.sendFile(path.join(__dirname, "../src/dashboard.html"));
-        })
-        .catch((err) => {
-          res.status(400).send({ message: err });
-        });
-    } else {
-      res.status(400).send({ message: "Invalid user data" });
-    }
+router.get("/login", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "../src/login.html"));
+  } catch (err) {
+    res.status(500).send({ message: "Error serving login page" });
   }
-  // console.log(userSchema);
-  res.sendFile(path.join(__dirname, "../src/login.html")); // Adjust the path as necessary
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    // Validate request body against schema
+    validate(req.body, userSchema);
+    
+    // Save user to database
+    await saveUserToDb(req.body);
+    res.status(201).json({ 
+      success: true,
+      message: "User created successfully" 
+    });
+
+  } catch (err) {
+    // Handle both validation and database errors
+    const statusCode = err.name === 'ValidationError' ? 400 : 500;
+    res.status(statusCode).json({
+      success: false, 
+      message: err.message
+    });
+  }
 });
 
 module.exports = router;
