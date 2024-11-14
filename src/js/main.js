@@ -5,6 +5,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    const submitButton = document.querySelector('#loginForm button[type="submit"]');
+
+    const originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span class="spinner"></span> Logging in...';
     try {
         const response = await fetch('/users/login', {
             method: 'POST',
@@ -24,6 +29,9 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         } else {
             // Handle login error
             console.error('Login failed');
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+            
         }
     } catch (error) {
         console.error('Error:', error);

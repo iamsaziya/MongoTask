@@ -16,6 +16,15 @@ app.use("/users", require("./routes/users.js"));
 app.use("/projects", require("./routes/projects.js"));
 app.use("/projects/:projectId/tasks", require("./routes/tasks.js"));
 
+app.get("/dashboard", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "src/index.html"));
+  } catch (err) {
+    res.status(500).send({ message: "Error serving dashboard page" });
+  }
+});
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

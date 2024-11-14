@@ -17,7 +17,7 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     // Validate request body against schema
-    validate(req.body, userSchema);
+    // validate(req.body, userSchema);
     
     // Save user to database
     await saveUserToDb(req.body);
