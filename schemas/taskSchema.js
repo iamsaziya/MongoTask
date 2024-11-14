@@ -5,9 +5,9 @@ const taskSchema = {
   description: { type: "string" },
   priority: { type: "string", enum: ["LOW", "MEDIUM", "HIGH"] },
   deadline: { type: "object", required: true },
+  status: { type: "string", enum: ["PENDING", "INPROGRESS", "COMPLETED"] },
   createdBy: { type: "string", required: true },
   createdAt: { type: "object" },
-  status: { type: "string", enum: ["PENDING", "INPROGRESS", "COMPLETED"] }
 };
 
 module.exports = taskSchema;
