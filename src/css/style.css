@@ -50,7 +50,7 @@ body {
   place-content: center;
 }
 
-.login-wrapper {
+.login-wrapper, .signup-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,7 +111,7 @@ form>button {
   }
 }
 
-.login-img img {
+.login-img img, .signup-img img {
   height: 40rem;
   margin-left: 10rem;
 
