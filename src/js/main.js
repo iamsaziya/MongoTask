@@ -1,5 +1,5 @@
 // POST /users/login
-if (window.location.pathname === "/login") {
+if (window.location.pathname === "/users/login") {
   document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
