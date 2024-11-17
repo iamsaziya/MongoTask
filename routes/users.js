@@ -1,8 +1,6 @@
 const express = require("express");
 const path = require("path");
-const { validate } = require("../lib/validation");
-const userSchema = require("../schemas/userSchema");
-const { saveUserToDb } = require("../lib/db");
+const { login, register } = require("../controllers/userController");
 const router = express.Router();
 router.use(express.static(path.join(__dirname, "../src")));
 // Route to serve the login.html file
@@ -14,26 +12,15 @@ router.get("/login", (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.get("/signup", (req, res) => {
   try {
-    // Validate request body against schema
-    validate(req.body, userSchema);
-    
-    // Save user to database
-    await saveUserToDb(req.body);
-    res.status(201).json({ 
-      success: true,
-      message: "User created successfully" 
-    });
-
+    res.sendFile(path.join(__dirname, "../src/signup.html"));
   } catch (err) {
-    // Handle both validation and database errors
-    const statusCode = err.name === 'ValidationError' ? 400 : 500;
-    res.status(statusCode).json({
-      success: false, 
-      message: err.message
-    });
+    res.status(500).send({ message: "Error serving signup page" });
   }
 });
+
+router.post("/login", async (req, res) => await login(req, res));
+router.post("/signup", async (req, res) => await register(req, res));
 
 module.exports = router;

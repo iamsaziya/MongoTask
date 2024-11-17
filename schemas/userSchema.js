@@ -1,9 +1,9 @@
 const userSchema = {
-  // userId: { type: "string" },
-  // name: { type: "string" },
+  userId: { type: "string" },
+  name: { type: "string" },
   email: { type: "string", required: true },
   password: { type: "string", required: true },
-  // createdAt: { type: "object" }
+  createdAt: { type: "object" }
 };
 
-module.exports = userSchema;
+module.exports = {userSchema};

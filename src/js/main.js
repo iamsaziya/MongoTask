@@ -1,5 +1,6 @@
 // POST /users/login
-if (window.location.pathname === "/users/login") {
+import { paths } from "./route_paths";
+if (paths.LOGIN) {
   document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -17,12 +18,12 @@ if (window.location.pathname === "/users/login") {
       const response = await fetch("/users/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           email: email,
-          password: password,
-        }),
+          password: password
+        })
       });
 
       if (response.ok) {
@@ -40,8 +41,53 @@ if (window.location.pathname === "/users/login") {
     }
   });
 }
+// POST /users/login
+if (paths.SIGNUP) {
+  document
+    .getElementById("signupForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-if (window.location.pathname === "/dashboard") {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const name = document.getElementById("name").value;
+
+      const submitButton = document.querySelector(
+        '#signupForm button[type="submit"]'
+      );
+
+      const originalButtonText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<span class="spinner"></span> Signing up...';
+      try {
+        const response = await fetch("/users/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            name: name
+          })
+        });
+
+        if (response.success) {
+          const data = await response.json();
+          // Handle successful signup
+          window.location.href = "/login"; // Redirect after successful signup
+        } else {
+          // Handle login error
+          console.error("signup failed");
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    });
+}
+if (paths.DASHBOARD || paths.HOME) {
   // Get modal elements
   const modal = document.getElementById("modal");
   const modalTitle = document.querySelector("#modal_header h3");
@@ -69,7 +115,7 @@ if (window.location.pathname === "/dashboard") {
   };
 
   // Event listeners
-  floatBtn.addEventListener('click', showModal);
+  floatBtn.addEventListener("click", showModal);
   closeBtn.addEventListener("click", hideModal);
   discardBtn.addEventListener("click", hideModal);
 
@@ -101,15 +147,15 @@ if (window.location.pathname === "/dashboard") {
       const response = await fetch("/tasks", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           name: taskName,
           description,
           deadline: new Date(deadline),
           priority,
-          status,
-        }),
+          status
+        })
       });
 
       if (response.ok) {

@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Middleware (if any)
-app.use(express.json()); // For parsing application/json
+app.use(express.json({ urlencoded: true })); // For parsing application/json
 
 // Dynamically import all route files from the routes folder
 app.use(express.static(path.join(__dirname, "src")));
