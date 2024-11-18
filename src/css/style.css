@@ -173,7 +173,7 @@ position: fixed;
 width: 6rem;
 height: 6rem;
 bottom: 4rem;
-right: 32rem;
+right: 4rem;
 background-color: white;
 color: #000;
 border-radius: 50%;
@@ -321,10 +321,13 @@ li input {
 
 .wrapper {
   display: flex !important;
+  flex-wrap: wrap;
+  gap: 2rem;
   width: 100%;
   padding: 0;
   position: relative;
-  margin-top: 7rem;
+  margin-top: 17rem;
+  margin-left: 10rem;
 }
 
 .information {

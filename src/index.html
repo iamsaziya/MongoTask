@@ -17,6 +17,104 @@
       .material-symbols-rounded {
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
       }
+      body{
+        overflow-x: hidden;
+      }
+      .task-card {
+        max-width: 320px;
+        padding: 16px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .priority-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        background-color: #fee2e2;
+        color: #b91c1c;
+        border-radius: 9999px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .task-title {
+        font-weight: 500;
+        color: #111827;
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .task-description {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 2px 0 0 0;
+      }
+
+      .menu-button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #9ca3af;
+        padding: 0;
+      }
+
+      .menu-button:hover {
+        color: #4b5563;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+      }
+
+      .avatar-group {
+        display: flex;
+      }
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid white;
+        margin-right: -8px;
+      }
+
+      .stats {
+        display: flex;
+        gap: 12px;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .stat-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      .wrapper-1 {
+        display: grid;
+        grid-template-columns: 325px 325px 325px;
+        grid-template-rows: auto;
+        gap: 2rem;
+      }
     </style>
   </head>
 
@@ -25,168 +123,473 @@
     <main>
       <div id="header" data-filter="true"></div>
       <div class="wrapper">
-        <section class="card_container">
-          <div class="card">
-            <div class="card_header">
-              <h3 class="card_title">Title 1</h3>
-            </div>
-            <div class="card_body">
-              <p>1. something...</p>
-              <p>2. something...</p>
-              <p>3. something...</p>
-            </div>
-            <div class="card_footer">
-              <div class="assignees">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>Assigned by Me saziya</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card_header">
-              <h3 class="card_title">Title 1</h3>
-            </div>
-            <div class="card_body">
-              <p>1. something...</p>
-              <p>2. something...</p>
-              <p>3. something...</p>
-            </div>
-            <div class="card_footer">
-              <div class="assignees">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>Assigned by Me saziya</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card_header">
-              <h3 class="card_title">Title 1</h3>
-            </div>
-            <div class="card_body">
-              <p>1. something...</p>
-              <p>2. something...</p>
-              <p>3. something...</p>
-            </div>
-            <div class="card_footer">
-              <div class="assignees">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>Assigned by Me saziya</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card_header">
-              <h3 class="card_title">Title 1</h3>
-            </div>
-            <div class="card_body">
-              <p>1. something...</p>
-              <p>2. something...</p>
-              <p>3. something...</p>
-            </div>
-            <div class="card_footer">
-              <div class="assignees">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>Assigned by Me saziya</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card_header">
-              <h3 class="card_title">Title 1</h3>
-            </div>
-            <div class="card_body">
-              <p>1. something...</p>
-              <p>2. something...</p>
-              <p>3. something...</p>
-            </div>
-            <div class="card_footer">
-              <div class="assignees">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>Assigned by Me saziya</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card_header">
-              <h3 class="card_title">Title 1</h3>
-            </div>
-            <div class="card_body">
-              <p>1. something...</p>
-              <p>2. something...</p>
-              <p>3. something...</p>
-            </div>
-            <div class="card_footer">
-              <div class="assignees">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>Assigned by Me saziya</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card_header">
-              <h3 class="card_title">Title 1</h3>
-            </div>
-            <div class="card_body">
-              <p>1. something...</p>
-              <p>2. something...</p>
-              <p>3. something...</p>
-            </div>
-            <div class="card_footer">
-              <div class="assignees">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>Assigned by Me saziya</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="information">
-          <div class="user_greets">
-            <h3>
-              Welcome <br />
-              Shan
-            </h3>
-            <span class="user_avatar"> </span>
-          </div>
-          <div class="infos">
+        <div class="task-card">
+          <div class="card-header">
             <div>
-              <h4>In Progress</h4>
-              <p>110</p>
+              <span class="priority-badge">High</span>
+              <h3 class="task-title">Copywriting Content</h3>
+              <p class="task-description">
+                Create content for Mindlax Mobil...
+              </p>
             </div>
-            <div>
-              <h4>Completed</h4>
-              <p>80</p>
+            <button class="menu-button">
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="5" cy="12" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="19" cy="12" r="2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-footer">
+            <div class="avatar-group">
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 1"
+              />
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 2"
+              />
             </div>
-            <div>
-              <h4>Pending</h4>
-              <p>10</p>
-            </div>
-            <div>
-              <h4>Total</h4>
-              <p>200</p>
+
+            <div class="stats">
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                    stroke-width="2"
+                  />
+                  <circle cx="9" cy="7" r="4" stroke-width="2" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-width="2" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke-width="2" />
+                </svg>
+                <span>8</span>
+              </div>
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M8 12h8M8 16h4"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z"
+                    stroke-width="2"
+                  />
+                </svg>
+                <span>16</span>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+
+        <div class="task-card">
+          <div class="card-header">
+            <div>
+              <span class="priority-badge">High</span>
+              <h3 class="task-title">Copywriting Content</h3>
+              <p class="task-description">
+                Create content for Mindlax Mobil...
+              </p>
+            </div>
+            <button class="menu-button">
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="5" cy="12" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="19" cy="12" r="2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-footer">
+            <div class="avatar-group">
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 1"
+              />
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 2"
+              />
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                    stroke-width="2"
+                  />
+                  <circle cx="9" cy="7" r="4" stroke-width="2" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-width="2" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke-width="2" />
+                </svg>
+                <span>8</span>
+              </div>
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M8 12h8M8 16h4"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z"
+                    stroke-width="2"
+                  />
+                </svg>
+                <span>16</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="card-header">
+            <div>
+              <span class="priority-badge">High</span>
+              <h3 class="task-title">Copywriting Content</h3>
+              <p class="task-description">
+                Create content for Mindlax Mobil...
+              </p>
+            </div>
+            <button class="menu-button">
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="5" cy="12" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="19" cy="12" r="2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-footer">
+            <div class="avatar-group">
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 1"
+              />
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 2"
+              />
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                    stroke-width="2"
+                  />
+                  <circle cx="9" cy="7" r="4" stroke-width="2" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-width="2" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke-width="2" />
+                </svg>
+                <span>8</span>
+              </div>
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M8 12h8M8 16h4"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z"
+                    stroke-width="2"
+                  />
+                </svg>
+                <span>16</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="card-header">
+            <div>
+              <span class="priority-badge">High</span>
+              <h3 class="task-title">Copywriting Content</h3>
+              <p class="task-description">
+                Create content for Mindlax Mobil...
+              </p>
+            </div>
+            <button class="menu-button">
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="5" cy="12" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="19" cy="12" r="2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-footer">
+            <div class="avatar-group">
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 1"
+              />
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 2"
+              />
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                    stroke-width="2"
+                  />
+                  <circle cx="9" cy="7" r="4" stroke-width="2" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-width="2" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke-width="2" />
+                </svg>
+                <span>8</span>
+              </div>
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M8 12h8M8 16h4"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z"
+                    stroke-width="2"
+                  />
+                </svg>
+                <span>16</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="card-header">
+            <div>
+              <span class="priority-badge">High</span>
+              <h3 class="task-title">Copywriting Content</h3>
+              <p class="task-description">
+                Create content for Mindlax Mobil...
+              </p>
+            </div>
+            <button class="menu-button">
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="5" cy="12" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="19" cy="12" r="2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-footer">
+            <div class="avatar-group">
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 1"
+              />
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 2"
+              />
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                    stroke-width="2"
+                  />
+                  <circle cx="9" cy="7" r="4" stroke-width="2" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-width="2" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke-width="2" />
+                </svg>
+                <span>8</span>
+              </div>
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M8 12h8M8 16h4"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z"
+                    stroke-width="2"
+                  />
+                </svg>
+                <span>16</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="card-header">
+            <div>
+              <span class="priority-badge">High</span>
+              <h3 class="task-title">Copywriting Content</h3>
+              <p class="task-description">
+                Create content for Mindlax Mobil...
+              </p>
+            </div>
+            <button class="menu-button">
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="5" cy="12" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="19" cy="12" r="2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-footer">
+            <div class="avatar-group">
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 1"
+              />
+              <img
+                src="https://via.placeholder.com/32"
+                class="avatar"
+                alt="User 2"
+              />
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                    stroke-width="2"
+                  />
+                  <circle cx="9" cy="7" r="4" stroke-width="2" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-width="2" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke-width="2" />
+                </svg>
+                <span>8</span>
+              </div>
+              <div class="stat">
+                <svg
+                  class="stat-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M8 12h8M8 16h4"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z"
+                    stroke-width="2"
+                  />
+                </svg>
+                <span>16</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <button class="float-btn">
@@ -245,8 +648,7 @@
     </div>
 
     <!-- Custom JS -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" ></script>
     <script src="js/header.js"></script>
-    
   </body>
 </html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindlax Redesign App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .visibility-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .assigned-users {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e9ecef;
+            margin-left: -8px;
+            border: 2px solid white;
+        }
+
+        .add-user {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            border: 1px dashed #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -8px;
+            cursor: pointer;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+        }
+
+        .tag.blue {
+            background: #e7f5ff;
+            color: #1c7ed6;
+        }
+
+        .tag.orange {
+            background: #fff4e6;
+            color: #f76707;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 24px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 24px;
+        }
+
+        .nav-item {
+            padding: 12px 0;
+            color: #495057;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item.active {
+            color: #228be6;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #228be6;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .column {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .column-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .column-title {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .card-priority {
+            color: #e03131;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            color: #212529;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-task-btn {
+            background: #228be6;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar"></div>
+    <main>
+        <div id="header"></div>
+
+        <div class="container">
+            <div class="header">
+                <div class="project-title">Mindlax Redesign App</div>
+                <div class="visibility-badge">
+                    <span>👁️ Visibility</span>
+                    <span>🔒 Private Board</span>
+                </div>
+            </div>
+    
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span>👤 Assigned to</span>
+                    <div class="assigned-users">
+                        <div class="user-avatar"></div>
+                        <div class="user-avatar"></div>
+                        <div class="user-avatar"></div>
+                        <div class="user-avatar"></div>
+                        <div class="add-user">+</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span>📅 Deadline</span>
+                    <span>29 Jun 2024</span>
+                </div>
+                <div class="meta-item">
+                    <span>🏷️ Tags</span>
+                    <div class="tags">
+                        <span class="tag blue">Mobile App Design</span>
+                        <span class="tag orange">Redesign</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="navigation">
+                <div class="nav-item">Table</div>
+                <div class="nav-item active">Board</div>
+                <div class="nav-item">Timeline</div>
+                <div class="nav-item">List</div>
+                <button class="add-task-btn">+ Add new task</button>
+            </div>
+    
+            <div class="board">
+                <div class="column">
+                    <div class="column-header">
+                        <span class="column-title">Backlog</span>
+                        <span>•••</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-priority">⭕ High</div>
+                        <div class="card-title">Copywriting Content</div>
+                        <div class="card-meta">
+                            <div class="assigned-users">
+                                <div class="user-avatar"></div>
+                                <div class="user-avatar"></div>
+                            </div>
+                            <span>🗨️ 8</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="column-header">
+                        <span class="column-title">To Do</span>
+                        <span>•••</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-priority">⭕ High</div>
+                        <div class="card-title">UI Design Implementation</div>
+                        <div class="card-meta">
+                            <div class="assigned-users">
+                                <div class="user-avatar"></div>
+                            </div>
+                            <span>🗨️ 12</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="column-header">
+                        <span class="column-title">In Progress</span>
+                        <span>•••</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Content Creation</div>
+                        <div class="card-meta">
+                            <div class="assigned-users">
+                                <div class="user-avatar"></div>
+                            </div>
+                            <span>🗨️ 5</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="column-header">
+                        <span class="column-title">Needs Review</span>
+                        <span>•••</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-priority">⭕ High</div>
+                        <div class="card-title">Information Architecture</div>
+                        <div class="card-meta">
+                            <div class="assigned-users">
+                                <div class="user-avatar"></div>
+                                <div class="user-avatar"></div>
+                            </div>
+                            <span>🗨️ 36</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/header.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dynamicValues.js"></script>
+</body>
+</html>
