@@ -1,4 +1,6 @@
 export const paths = {
+    // you need to fix the issue of any id after for example users/:userid i think this will render as users/someid then this function will not work
+    
   HOME: window.location.pathname.startsWith("/"),
   DASHBOARD: window.location.pathname.startsWith("/dashboard"),
   ANALYTICS: window.location.pathname.startsWith("/analytics"),
