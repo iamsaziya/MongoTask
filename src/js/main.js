@@ -173,7 +173,7 @@ if (paths.DASHBOARD || paths.HOME) {
 }
 if (paths.DASHBOARD) {
   // get method to get all projects from /projects
-  const data = await fetch("/projects/12345", { method: "GET" });
+  const data = await fetch("/projects/123", { method: "GET" });
   const res = await data.json();
   const templateEngine = new TemplateEngine();
   // Process template

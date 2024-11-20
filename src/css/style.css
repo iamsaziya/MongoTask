@@ -938,7 +938,8 @@ body {
 
 /* task card styles start */
 .task-card {
-  max-width: 30rem;
+  width: 25rem;
+  max-width: 40rem;
   padding: 1.6rem;
   background: white;
   border-radius: 0.8rem;
