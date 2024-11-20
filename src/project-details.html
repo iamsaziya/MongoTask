@@ -4,200 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details</title>
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
         body {
             background-color: #f8f9fa;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
-        }
-
-        .project-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .visibility-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .project-meta {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .assigned-users {
-            display: flex;
-            align-items: center;
-        }
-
-        .user-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #e9ecef;
-            margin-left: -8px;
-            border: 2px solid white;
-        }
-
-        .add-user {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #f8f9fa;
-            border: 1px dashed #dee2e6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: -8px;
-            cursor: pointer;
-        }
-
-        .tags {
-            display: flex;
-            gap: 8px;
-        }
-
-        .tag {
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 13px;
-        }
-
-        .tag.blue {
-            background: #e7f5ff;
-            color: #1c7ed6;
-        }
-
-        .tag.orange {
-            background: #fff4e6;
-            color: #f76707;
-        }
-
-        .navigation {
-            display: flex;
-            gap: 24px;
-            border-bottom: 1px solid #dee2e6;
-            margin-bottom: 24px;
-        }
-
-        .nav-item {
-            padding: 12px 0;
-            color: #495057;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .nav-item.active {
-            color: #228be6;
-        }
-
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: #228be6;
-        }
-
-        .board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-
-        .column {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .column-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .column-title {
-            font-weight: 600;
-            color: #495057;
-        }
-
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .card-priority {
-            color: #e03131;
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
-
-        .card-title {
-            color: #212529;
-            margin-bottom: 12px;
-            font-size: 14px;
-        }
-
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .add-task-btn {
-            background: #228be6;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            float: right;
+         
         }
     </style>
+    </link>
 </head>
 <body>
     <div id="sidebar"></div>
     <main>
         <div id="header"></div>
 
-        <div class="container">
+        <div class="container-project-details">
             <div class="header">
                 <div class="project-title">Mindlax Redesign App</div>
                 <div class="visibility-badge">

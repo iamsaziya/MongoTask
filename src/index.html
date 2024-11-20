@@ -20,101 +20,7 @@
       body{
         overflow-x: hidden;
       }
-      .task-card {
-        max-width: 320px;
-        padding: 16px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          sans-serif;
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-
-      .priority-badge {
-        display: inline-block;
-        padding: 2px 8px;
-        background-color: #fee2e2;
-        color: #b91c1c;
-        border-radius: 9999px;
-        font-size: 12px;
-        font-weight: 500;
-        margin-bottom: 4px;
-      }
-
-      .task-title {
-        font-weight: 500;
-        color: #111827;
-        margin: 0;
-        font-size: 14px;
-      }
-
-      .task-description {
-        color: #6b7280;
-        font-size: 14px;
-        margin: 2px 0 0 0;
-      }
-
-      .menu-button {
-        border: none;
-        background: none;
-        cursor: pointer;
-        color: #9ca3af;
-        padding: 0;
-      }
-
-      .menu-button:hover {
-        color: #4b5563;
-      }
-
-      .card-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 16px;
-      }
-
-      .avatar-group {
-        display: flex;
-      }
-
-      .avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 2px solid white;
-        margin-right: -8px;
-      }
-
-      .stats {
-        display: flex;
-        gap: 12px;
-        color: #6b7280;
-        font-size: 14px;
-      }
-
-      .stat {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      .stat-icon {
-        width: 16px;
-        height: 16px;
-      }
-
-      .wrapper-1 {
-        display: grid;
-        grid-template-columns: 325px 325px 325px;
-        grid-template-rows: auto;
-        gap: 2rem;
-      }
+    
     </style>
   </head>
 
@@ -605,13 +511,13 @@
         />
       </svg>
     </button>
+   
 
     <div id="modal">
       <div id="modal_content">
         <div id="modal_header">
           <h3>Modal Title</h3>
           <span class="close_btn" onclick="hideModal()">
-            <!-- <span class="material-symbols-rounded">close</span> -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -626,9 +532,9 @@
           </span>
         </div>
         <div id="modal_body">
-          <input type="text" placeholder="Task Name" />
-          <input type="text" placeholder="Task Description" />
-          <input type="date" placeholder="Task Deadline" />
+          <input type="text" placeholder="Project Name" />
+          <input type="text" placeholder="Project Description" />
+          <input type="date" placeholder="Project Deadline" />
           <select name="priority" id="priority" placeholder="Priority">
             <option value="LOW">Low</option>
             <option value="MEDIUM">Medium</option>
@@ -647,7 +553,118 @@
       </div>
     </div>
 
+    <script>
+      // Get modal elements
+      const modalContent = document.getElementById('modal_content');
+      const projectNameInput = document.querySelector('#modal_body input[placeholder="Project Name"]');
+      const projectDescInput = document.querySelector('#modal_body input[placeholder="Project Description"]');
+      const projectDeadlineInput = document.querySelector('#modal_body input[type="date"]');
+      const prioritySelect = document.getElementById('priority');
+      const statusSelect = document.getElementById('status');
+      const createBtn = document.querySelector('.create_btn');
+      const wrapper = document.querySelector('.wrapper');
+
+      // Close modal when clicking outside content
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          hideModal();
+        }
+      });
+
+      // Handle create button click
+      createBtn.addEventListener('click', () => {
+        // Get form values
+        const projectData = {
+          name: projectNameInput.value,
+          description: projectDescInput.value,
+          deadline: projectDeadlineInput.value,
+          priority: prioritySelect.value,
+          status: statusSelect.value
+        };
+
+        // Validate required fields
+        if (!projectData.name || !projectData.description || !projectData.deadline) {
+          alert('Please fill in all required fields');
+          return;
+        }
+
+        // Create new task card
+        const taskCard = document.createElement('div');
+        taskCard.className = 'task-card';
+        taskCard.innerHTML = `
+          <div class="card-header">
+            <div>
+              <span class="priority-badge">${projectData.priority}</span>
+              <h3 class="task-title">${projectData.name}</h3>
+              <p class="task-description">${projectData.description}</p>
+            </div>
+            <button class="menu-button">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="5" cy="12" r="2" />
+                <circle cx="12" cy="12" r="2" />
+                <circle cx="19" cy="12" r="2" />
+              </svg>
+            </button>
+          </div>
+          <div class="card-footer">
+            <div class="avatar-group">
+              <img src="https://via.placeholder.com/32" class="avatar" alt="User 1" />
+              <img src="https://via.placeholder.com/32" class="avatar" alt="User 2" />
+            </div>
+            <div class="stats">
+              <div class="stat">
+                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-width="2"/>
+                  <circle cx="9" cy="7" r="4" stroke-width="2" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-width="2" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke-width="2" />
+                </svg>
+                <span>8</span>
+              </div>
+              <div class="stat">
+                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M8 12h8M8 16h4" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z" stroke-width="2"/>
+                </svg>
+                <span>16</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Add new task card to wrapper
+        wrapper.appendChild(taskCard);
+
+        // Clear form
+        projectNameInput.value = '';
+        projectDescInput.value = '';
+        projectDeadlineInput.value = '';
+        prioritySelect.selectedIndex = 0;
+        statusSelect.selectedIndex = 0;
+
+        // Hide modal
+        hideModal();
+      });
+
+      // Prevent modal content clicks from bubbling to modal
+      modalContent.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    </script>
+
     <!-- Custom JS -->
+    <script>
+      const floatBtn = document.querySelector('.float-btn');
+      const modal = document.getElementById('modal');
+      
+      floatBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+      });
+
+      function hideModal() {
+        modal.style.display = 'none';
+      }
+    </script>
     <script src="js/main.js" ></script>
     <script src="js/header.js"></script>
   </body>
