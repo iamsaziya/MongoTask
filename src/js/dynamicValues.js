@@ -146,31 +146,4 @@ class TemplateEngine {
 }
 
 // Example usage:
-const templateEngine = new TemplateEngine();
 
-const data = {
-  user: {
-    name: "John Doe",
-    isAdmin: true,
-    projects: [
-      {
-        name: "Project 1"
-      },
-      {
-        name: "Project 2"
-      }
-    ],
-    tasks: [
-      { name: "Task 1", status: "completed" },
-      { name: "Task 2", status: "pending" },
-      { name: "Task 3", status: "in-progress" }
-    ],
-    getFullName: function () {
-      return `${this.name} ${this.isAdmin}`;
-    }
-  }
-};
-
-// Process template
-const result = templateEngine.process(document.body.innerHTML, data);
-document.body.innerHTML = result;

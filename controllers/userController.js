@@ -9,7 +9,7 @@ const register = async (req, res) => {
   try {
     // Validate request body against schema
     req.body.userId = userIdGenerator;
-    validate(req.body, userSchema);
+    // validate(req.body, userSchema);
     // Save user to database
     await saveUserToDb(req.body);
     res.status(201).json({
