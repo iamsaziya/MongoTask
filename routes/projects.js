@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(express.static(path.join(__dirname, "../src")));
 // Route to serve the login.html file
 router.get(
-  "/:userId",
+  "/api/:userId",
   async (req, res) => await getAllProjectsByUserId(req, res)
 );
 
