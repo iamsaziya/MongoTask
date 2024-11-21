@@ -1,232 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Details</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 
     <style>
-        body {
-            background-color: #f8f9fa;
-         
-        }
+      body {
+        background-color: #f8f9fa;
+      }
     </style>
-    </link>
-</head>
-<body>
+  </head>
+  <body>
     <div id="sidebar"></div>
     <main>
-        <div id="header"></div>
+      <div id="header"></div>
 
-        <div class="container-project-details">
-            <div class="header">
-                <div class="project-title">{{project.name}}</div>
-            </div>
-    
-            <div class="project-meta">
-                <div class="meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="M480-492.31q-57.75 0-98.87-41.12Q340-574.56 340-632.31q0-57.75 41.13-98.87 41.12-41.13 98.87-41.13 57.75 0 98.87 41.13Q620-690.06 620-632.31q0 57.75-41.13 98.88-41.12 41.12-98.87 41.12ZM180-248.46v-28.16q0-29.38 15.96-54.42 15.96-25.04 42.66-38.5 59.3-29.07 119.65-43.61 60.35-14.54 121.73-14.54t121.73 14.54q60.35 14.54 119.65 43.61 26.7 13.46 42.66 38.5Q780-306 780-276.62v28.16q0 25.3-17.73 43.04-17.73 17.73-43.04 17.73H240.77q-25.31 0-43.04-17.73Q180-223.16 180-248.46Zm60 .77h480v-28.93q0-12.15-7.04-22.5-7.04-10.34-19.11-16.88-51.7-25.46-105.42-38.58Q534.7-367.69 480-367.69q-54.7 0-108.43 13.11-53.72 13.12-105.42 38.58-12.07 6.54-19.11 16.88-7.04 10.35-7.04 22.5v28.93Zm240-304.62q33 0 56.5-23.5t23.5-56.5q0-33-23.5-56.5t-56.5-23.5q-33 0-56.5 23.5t-23.5 56.5q0 33 23.5 56.5t56.5 23.5Zm0-80Zm0 384.62Z"/></svg>
-                    <span> Assigned to</span>
-                    <div class="assigned-users">
-                        <div class="user-avatar"></div>
-                        <div class="user-avatar"></div>
-                        <div class="user-avatar"></div>
-                        <div class="user-avatar"></div>
-                        <div class="add-user">+</div>
-                    </div>
-                </div>
-                <div class="meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="M200-607.69h560v-100q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v100Zm0 0V-720v112.31ZM212.31-100Q182-100 161-121q-21-21-21-51.31v-535.38Q140-738 161-759q21-21 51.31-21h55.38v-53.85q0-13.15 8.81-21.96 8.81-8.8 21.96-8.8 13.16 0 21.96 8.8 8.81 8.81 8.81 21.96V-780h303.08v-54.61q0-12.77 8.61-21.39 8.62-8.61 21.39-8.61 12.77 0 21.38 8.61 8.62 8.62 8.62 21.39V-780h55.38Q778-780 799-759q21 21 21 51.31v188.54q0 12.77-8.62 21.38-8.61 8.62-21.38 8.62t-21.38-8.62q-8.62-8.61-8.62-21.38v-28.54H200v375.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85H457q12.77 0 21.39 8.62Q487-142.77 487-130t-8.61 21.38Q469.77-100 457-100H212.31Zm515.38 40q-74.92 0-127.46-52.54-52.54-52.54-52.54-127.46 0-74.92 52.54-127.46Q652.77-420 727.69-420q74.93 0 127.46 52.54 52.54 52.54 52.54 127.46 0 74.92-52.54 127.46Q802.62-60 727.69-60Zm17.7-187.23V-340q0-7.23-5.24-12.46-5.23-5.23-12.46-5.23t-12.46 5.23Q710-347.23 710-340v92.15q0 7.23 2.62 13.77 2.61 6.54 8.23 12.16l61 61q5.23 5.23 12.27 5.42 7.03.19 12.65-5.42 5.62-5.62 5.62-12.46 0-6.85-5.62-12.47l-61.38-61.38Z"/></svg>
-                    <span>Deadline</span>
-                    <span class="date">{{project.deadline}}</span>
-                </div>
-
-                <div class="meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="M687.69-100q-74.92 0-127.46-52.54-52.54-52.54-52.54-127.46 0-74.92 52.54-127.46Q612.77-460 687.69-460q74.93 0 127.46 52.54 52.54 52.54 52.54 127.46 0 74.92-52.54 127.46Q762.62-100 687.69-100Zm17.7-187.31V-380q0-7.08-5.31-12.38-5.31-5.31-12.39-5.31-7.07 0-12.38 5.31Q670-387.08 670-380v92.15q0 7.07 2.62 13.69 2.61 6.62 8.23 12.24l61 61q5.23 5.23 12.27 5.42 7.03.19 12.65-5.42 5.62-5.62 5.62-12.46 0-6.85-5.62-12.47l-61.38-61.46ZM212.31-140q-29.83 0-51.07-21.24Q140-182.48 140-212.31v-535.38q0-29.83 21.24-51.07Q182.48-820 212.31-820h176.23q8.31-29.23 33.96-48.46t57.5-19.23q33.08 0 58.42 19.23 25.35 19.23 33.66 48.46h175.61q29.83 0 51.07 21.24Q820-777.52 820-747.69v176.15q0 12.75-8.63 21.38-8.63 8.62-21.38 8.62-12.76 0-21.37-8.62-8.62-8.63-8.62-21.38v-176.15q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H660v68.46q0 15.37-10.35 25.76-10.35 10.39-25.65 10.39H335.99q-15.3 0-25.64-10.39Q300-676.17 300-691.54V-760h-87.69q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 5.39 3.46 8.85t8.85 3.46h206.54q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37-8.62 8.62-21.37 8.62H212.31Zm267.76-615.38q15.39 0 25.74-10.42 10.34-10.41 10.34-25.81 0-15.39-10.41-25.74-10.41-10.34-25.81-10.34-15.39 0-25.74 10.41-10.34 10.42-10.34 25.81 0 15.39 10.41 25.74 10.41 10.35 25.81 10.35Z"/></svg>
-                    <span>Status</span>
-                    <span>{{project.status}}</span>
-                </div>
-              
-            </div>
-    <div>
-            
-    </div>
-            <div class="navigation">
-                <div class="nav-item active" > <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="M323.08-597.69q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.38 8.63-8.61 21.38-8.61H790q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37-8.62 8.62-21.37 8.62H323.08Zm0 147.69q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.37 8.63-8.62 21.38-8.62H790q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q802.75-450 790-450H323.08Zm0 147.69q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.37 8.63-8.62 21.38-8.62H790q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.38-8.62 8.61-21.37 8.61H323.08ZM172.31-595.38q-13.73 0-23.02-9.4t-9.29-23.3q0-13.56 9.29-22.74 9.29-9.18 23.02-9.18t23.02 9.18q9.29 9.18 9.29 22.74 0 13.9-9.29 23.3t-23.02 9.4Zm0 147.3q-13.73 0-23.02-9.18Q140-466.43 140-480q0-14.31 9.29-23.5t23.02-9.19q13.73 0 23.02 9.19t9.29 23.5q0 13.57-9.29 22.74-9.29 9.18-23.02 9.18Zm0 148.08q-13.73 0-23.02-9.4T140-332.69q0-13.57 9.29-22.75t23.02-9.18q13.73 0 23.02 9.18t9.29 22.75q0 13.89-9.29 23.29-9.29 9.4-23.02 9.4Z"/></svg>List</div>
-               
-                <div class="nav-item"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="M200-520q-24.54 0-42.27-17.73Q140-555.46 140-580v-180q0-24.54 17.73-42.27Q175.46-820 200-820h180q24.54 0 42.27 17.73Q440-784.54 440-760v180q0 24.54-17.73 42.27Q404.54-520 380-520H200Zm0 380q-24.54 0-42.27-17.73Q140-175.46 140-200v-180q0-24.54 17.73-42.27Q175.46-440 200-440h180q24.54 0 42.27 17.73Q440-404.54 440-380v180q0 24.54-17.73 42.27Q404.54-140 380-140H200Zm380-380q-24.54 0-42.27-17.73Q520-555.46 520-580v-180q0-24.54 17.73-42.27Q555.46-820 580-820h180q24.54 0 42.27 17.73Q820-784.54 820-760v180q0 24.54-17.73 42.27Q784.54-520 760-520H580Zm0 380q-24.54 0-42.27-17.73Q520-175.46 520-200v-180q0-24.54 17.73-42.27Q555.46-440 580-440h180q24.54 0 42.27 17.73Q820-404.54 820-380v180q0 24.54-17.73 42.27Q784.54-140 760-140H580ZM200-580h180v-180H200v180Zm380 0h180v-180H580v180Zm0 380h180v-180H580v180Zm-380 0h180v-180H200v180Zm380-380Zm0 200Zm-200 0Zm0-200Z"/></svg>Board</div>
-               
-                <button class="add-task-btn"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="M450-450H250q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q237.25-510 250-510h200v-200q0-12.75 8.63-21.37 8.63-8.63 21.38-8.63 12.76 0 21.37 8.63Q510-722.75 510-710v200h200q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q722.75-450 710-450H510v200q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Q450-237.25 450-250v-200Z"/></svg> Add new task</button>
-            </div>
-
-
-            <div class="task-list">
-                <!-- Task 1 -->
-                <div class="task-item">
-                    <div class="task-content">
-                        <div class="task-title">Schedule me an appointment with my endocrinologist</div>
-                        <div class="task-meta">
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                15 Days left
-                            </div>
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                17
-                            </div>
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                                6
-                            </div>
-                        </div>
-                    </div>
-                    <div class="priority high">High Priority</div>
-                </div>
-            
-                <!-- Task 2 -->
-                <div class="task-item">
-                    <div class="task-content">
-                        <div class="task-title">Help DStudio get more customers</div>
-                        <div class="task-meta">
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                15 Days left
-                            </div>
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                12
-                            </div>
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                                25
-                            </div>
-                        </div>
-                    </div>
-                    <div class="priority medium">Medium Priority</div>
-                </div>
-            
-                <!-- Task 3 -->
-                <div class="task-item">
-                    <div class="task-content">
-                        <div class="task-title">Design team meeting</div>
-                        <div class="task-meta">
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                20 Days left
-                            </div>
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                8
-                            </div>
-                            <div class="meta-item">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                                14
-                            </div>
-                        </div>
-                    </div>
-                    <div class="priority low">Low Priority</div>
-                </div>
-            </div>
-          
-
-            
-            <!-- <div class="board">
-                <div class="column">
-                    <div class="column-header">
-                        <span class="column-title">Backlog</span>
-                        <span>•••</span>
-                    </div>
-                    <div class="card">
-                        <div class="card-priority">⭕ High</div>
-                        <div class="card-title">Copywriting Content</div>
-                        <div class="card-meta">
-                            <div class="assigned-users">
-                                <div class="user-avatar"></div>
-                                <div class="user-avatar"></div>
-                            </div>
-                            <span>🗨️ 8</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="column">
-                    <div class="column-header">
-                        <span class="column-title">To Do</span>
-                        <span>•••</span>
-                    </div>
-                    <div class="card">
-                        <div class="card-priority">⭕ High</div>
-                        <div class="card-title">UI Design Implementation</div>
-                        <div class="card-meta">
-                            <div class="assigned-users">
-                                <div class="user-avatar"></div>
-                            </div>
-                            <span>🗨️ 12</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="column">
-                    <div class="column-header">
-                        <span class="column-title">In Progress</span>
-                        <span>•••</span>
-                    </div>
-                    <div class="card">
-                        <div class="card-title">Content Creation</div>
-                        <div class="card-meta">
-                            <div class="assigned-users">
-                                <div class="user-avatar"></div>
-                            </div>
-                            <span>🗨️ 5</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="column">
-                    <div class="column-header">
-                        <span class="column-title">Needs Review</span>
-                        <span>•••</span>
-                    </div>
-                    <div class="card">
-                        <div class="card-priority">⭕ High</div>
-                        <div class="card-title">Information Architecture</div>
-                        <div class="card-meta">
-                            <div class="assigned-users">
-                                <div class="user-avatar"></div>
-                                <div class="user-avatar"></div>
-                            </div>
-                            <span>🗨️ 36</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+      <div class="container-project-details">
+        <div class="header">
+          <div class="project-title">{{project.name}}</div>
         </div>
-    </main>
 
+        <div class="project-meta">
+          <div class="meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentcolor"
+            >
+              <path
+                d="M480-492.31q-57.75 0-98.87-41.12Q340-574.56 340-632.31q0-57.75 41.13-98.87 41.12-41.13 98.87-41.13 57.75 0 98.87 41.13Q620-690.06 620-632.31q0 57.75-41.13 98.88-41.12 41.12-98.87 41.12ZM180-248.46v-28.16q0-29.38 15.96-54.42 15.96-25.04 42.66-38.5 59.3-29.07 119.65-43.61 60.35-14.54 121.73-14.54t121.73 14.54q60.35 14.54 119.65 43.61 26.7 13.46 42.66 38.5Q780-306 780-276.62v28.16q0 25.3-17.73 43.04-17.73 17.73-43.04 17.73H240.77q-25.31 0-43.04-17.73Q180-223.16 180-248.46Zm60 .77h480v-28.93q0-12.15-7.04-22.5-7.04-10.34-19.11-16.88-51.7-25.46-105.42-38.58Q534.7-367.69 480-367.69q-54.7 0-108.43 13.11-53.72 13.12-105.42 38.58-12.07 6.54-19.11 16.88-7.04 10.35-7.04 22.5v28.93Zm240-304.62q33 0 56.5-23.5t23.5-56.5q0-33-23.5-56.5t-56.5-23.5q-33 0-56.5 23.5t-23.5 56.5q0 33 23.5 56.5t56.5 23.5Zm0-80Zm0 384.62Z"
+              />
+            </svg>
+            <span> Assigned to</span>
+            <div class="assigned-users">
+              <div class="user-avatar"></div>
+              <div class="user-avatar"></div>
+              <div class="user-avatar"></div>
+              <div class="user-avatar"></div>
+              <div class="add-user">+</div>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentcolor"
+            >
+              <path
+                d="M200-607.69h560v-100q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v100Zm0 0V-720v112.31ZM212.31-100Q182-100 161-121q-21-21-21-51.31v-535.38Q140-738 161-759q21-21 51.31-21h55.38v-53.85q0-13.15 8.81-21.96 8.81-8.8 21.96-8.8 13.16 0 21.96 8.8 8.81 8.81 8.81 21.96V-780h303.08v-54.61q0-12.77 8.61-21.39 8.62-8.61 21.39-8.61 12.77 0 21.38 8.61 8.62 8.62 8.62 21.39V-780h55.38Q778-780 799-759q21 21 21 51.31v188.54q0 12.77-8.62 21.38-8.61 8.62-21.38 8.62t-21.38-8.62q-8.62-8.61-8.62-21.38v-28.54H200v375.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85H457q12.77 0 21.39 8.62Q487-142.77 487-130t-8.61 21.38Q469.77-100 457-100H212.31Zm515.38 40q-74.92 0-127.46-52.54-52.54-52.54-52.54-127.46 0-74.92 52.54-127.46Q652.77-420 727.69-420q74.93 0 127.46 52.54 52.54 52.54 52.54 127.46 0 74.92-52.54 127.46Q802.62-60 727.69-60Zm17.7-187.23V-340q0-7.23-5.24-12.46-5.23-5.23-12.46-5.23t-12.46 5.23Q710-347.23 710-340v92.15q0 7.23 2.62 13.77 2.61 6.54 8.23 12.16l61 61q5.23 5.23 12.27 5.42 7.03.19 12.65-5.42 5.62-5.62 5.62-12.46 0-6.85-5.62-12.47l-61.38-61.38Z"
+              />
+            </svg>
+            <span>Deadline</span>
+            <span class="date">{{project.deadline}}</span>
+          </div>
+
+          <div class="meta-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentcolor"
+            >
+              <path
+                d="M687.69-100q-74.92 0-127.46-52.54-52.54-52.54-52.54-127.46 0-74.92 52.54-127.46Q612.77-460 687.69-460q74.93 0 127.46 52.54 52.54 52.54 52.54 127.46 0 74.92-52.54 127.46Q762.62-100 687.69-100Zm17.7-187.31V-380q0-7.08-5.31-12.38-5.31-5.31-12.39-5.31-7.07 0-12.38 5.31Q670-387.08 670-380v92.15q0 7.07 2.62 13.69 2.61 6.62 8.23 12.24l61 61q5.23 5.23 12.27 5.42 7.03.19 12.65-5.42 5.62-5.62 5.62-12.46 0-6.85-5.62-12.47l-61.38-61.46ZM212.31-140q-29.83 0-51.07-21.24Q140-182.48 140-212.31v-535.38q0-29.83 21.24-51.07Q182.48-820 212.31-820h176.23q8.31-29.23 33.96-48.46t57.5-19.23q33.08 0 58.42 19.23 25.35 19.23 33.66 48.46h175.61q29.83 0 51.07 21.24Q820-777.52 820-747.69v176.15q0 12.75-8.63 21.38-8.63 8.62-21.38 8.62-12.76 0-21.37-8.62-8.62-8.63-8.62-21.38v-176.15q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H660v68.46q0 15.37-10.35 25.76-10.35 10.39-25.65 10.39H335.99q-15.3 0-25.64-10.39Q300-676.17 300-691.54V-760h-87.69q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 5.39 3.46 8.85t8.85 3.46h206.54q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37-8.62 8.62-21.37 8.62H212.31Zm267.76-615.38q15.39 0 25.74-10.42 10.34-10.41 10.34-25.81 0-15.39-10.41-25.74-10.41-10.34-25.81-10.34-15.39 0-25.74 10.41-10.34 10.42-10.34 25.81 0 15.39 10.41 25.74 10.41 10.35 25.81 10.35Z"
+              />
+            </svg>
+            <span>Status</span>
+            <span>{{project.status}}</span>
+          </div>
+        </div>
+        <div class="navigation">
+          <div class="nav-item active" id="list-view">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentcolor"
+            >
+              <path
+                d="M323.08-597.69q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.38 8.63-8.61 21.38-8.61H790q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37-8.62 8.62-21.37 8.62H323.08Zm0 147.69q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.37 8.63-8.62 21.38-8.62H790q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q802.75-450 790-450H323.08Zm0 147.69q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.37 8.63-8.62 21.38-8.62H790q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.38-8.62 8.61-21.37 8.61H323.08ZM172.31-595.38q-13.73 0-23.02-9.4t-9.29-23.3q0-13.56 9.29-22.74 9.29-9.18 23.02-9.18t23.02 9.18q9.29 9.18 9.29 22.74 0 13.9-9.29 23.3t-23.02 9.4Zm0 147.3q-13.73 0-23.02-9.18Q140-466.43 140-480q0-14.31 9.29-23.5t23.02-9.19q13.73 0 23.02 9.19t9.29 23.5q0 13.57-9.29 22.74-9.29 9.18-23.02 9.18Zm0 148.08q-13.73 0-23.02-9.4T140-332.69q0-13.57 9.29-22.75t23.02-9.18q13.73 0 23.02 9.18t9.29 22.75q0 13.89-9.29 23.29-9.29 9.4-23.02 9.4Z"
+              /></svg>List
+          </div>
+
+          <div class="nav-item" id="board-view">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentcolor"
+            >
+              <path
+                d="M200-520q-24.54 0-42.27-17.73Q140-555.46 140-580v-180q0-24.54 17.73-42.27Q175.46-820 200-820h180q24.54 0 42.27 17.73Q440-784.54 440-760v180q0 24.54-17.73 42.27Q404.54-520 380-520H200Zm0 380q-24.54 0-42.27-17.73Q140-175.46 140-200v-180q0-24.54 17.73-42.27Q175.46-440 200-440h180q24.54 0 42.27 17.73Q440-404.54 440-380v180q0 24.54-17.73 42.27Q404.54-140 380-140H200Zm380-380q-24.54 0-42.27-17.73Q520-555.46 520-580v-180q0-24.54 17.73-42.27Q555.46-820 580-820h180q24.54 0 42.27 17.73Q820-784.54 820-760v180q0 24.54-17.73 42.27Q784.54-520 760-520H580Zm0 380q-24.54 0-42.27-17.73Q520-175.46 520-200v-180q0-24.54 17.73-42.27Q555.46-440 580-440h180q24.54 0 42.27 17.73Q820-404.54 820-380v180q0 24.54-17.73 42.27Q784.54-140 760-140H580ZM200-580h180v-180H200v180Zm380 0h180v-180H580v180Zm0 380h180v-180H580v180Zm-380 0h180v-180H200v180Zm380-380Zm0 200Zm-200 0Zm0-200Z"
+              /></svg>Board
+          </div>
+
+          <button class="add-task-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentcolor"
+            >
+              <path
+                d="M450-450H250q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q237.25-510 250-510h200v-200q0-12.75 8.63-21.37 8.63-8.63 21.38-8.63 12.76 0 21.37 8.63Q510-722.75 510-710v200h200q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q722.75-450 710-450H510v200q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Q450-237.25 450-250v-200Z"
+              />
+            </svg>
+            Add new task
+          </button>
+        </div>
+
+        <div class="task-list" id="tasks">
+          <!-- Task 1 -->
+          <div class="task-item">
+            <div class="task-content">
+              <div class="task-title">
+                Schedule me an appointment with my endocrinologist
+              </div>
+              <div class="task-meta">
+                <div class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 8v4l3 3"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  15 Days left
+                </div>
+                <div class="meta-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="currentcolor"
+                  >
+                    <path
+                      d="M334.23-256.54q-97.44 0-165.83-67.81-68.4-67.8-68.4-165.07t68.4-165.27q68.39-68 165.83-68h359.62q69.23 0 117.69 48.08Q860-626.54 860-557.31q0 69.23-48.46 117.31t-117.69 48.08H353.46q-40.61 0-69.34-28.3-28.73-28.29-28.73-68.96 0-40.67 28.53-69.4 28.53-28.73 69.54-28.73h321.15q12.75 0 21.38 8.63 8.62 8.63 8.62 21.39 0 12.75-8.62 21.37-8.63 8.61-21.38 8.61H353.46q-16.08 0-27.08 10.81t-11 26.88q0 16.08 11 26.89 11 10.81 27.08 10.81h340.77q44.31-.62 75.04-30.78Q800-512.86 800-557.31q0-44.26-30.92-74.82-30.93-30.56-75.23-30.56H334.23q-72.54-.62-123.38 50.15Q160-561.77 160-489.28q0 71.46 50.85 121.49 50.84 50.02 123.38 51.25h340.38q12.75 0 21.38 8.63 8.62 8.63 8.62 21.38 0 12.76-8.62 21.38-8.63 8.61-21.38 8.61H334.23Z"
+                    />
+                  </svg>
+                  6
+                </div>
+              </div>
+            </div>
+            <div class="priority high">High Priority</div>
+          </div>
+
+          <!-- Task 2 -->
+          <div class="task-item">
+            <div class="task-content">
+              <div class="task-title">Help DStudio get more customers</div>
+              <div class="task-meta">
+                <div class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 8v4l3 3"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  15 Days left
+                </div>
+                <div class="meta-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="currentcolor"
+                  >
+                    <path
+                      d="M334.23-256.54q-97.44 0-165.83-67.81-68.4-67.8-68.4-165.07t68.4-165.27q68.39-68 165.83-68h359.62q69.23 0 117.69 48.08Q860-626.54 860-557.31q0 69.23-48.46 117.31t-117.69 48.08H353.46q-40.61 0-69.34-28.3-28.73-28.29-28.73-68.96 0-40.67 28.53-69.4 28.53-28.73 69.54-28.73h321.15q12.75 0 21.38 8.63 8.62 8.63 8.62 21.39 0 12.75-8.62 21.37-8.63 8.61-21.38 8.61H353.46q-16.08 0-27.08 10.81t-11 26.88q0 16.08 11 26.89 11 10.81 27.08 10.81h340.77q44.31-.62 75.04-30.78Q800-512.86 800-557.31q0-44.26-30.92-74.82-30.93-30.56-75.23-30.56H334.23q-72.54-.62-123.38 50.15Q160-561.77 160-489.28q0 71.46 50.85 121.49 50.84 50.02 123.38 51.25h340.38q12.75 0 21.38 8.63 8.62 8.63 8.62 21.38 0 12.76-8.62 21.38-8.63 8.61-21.38 8.61H334.23Z"
+                    />
+                  </svg>
+                  25
+                </div>
+              </div>
+            </div>
+            <div class="priority medium">Medium Priority</div>
+          </div>
+
+          <!-- Task 3 -->
+          <div class="task-item">
+            <div class="task-content">
+              <div class="task-title">Design team meeting</div>
+              <div class="task-meta">
+                <div class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 8v4l3 3"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  20 Days left
+                </div>
+
+                <div class="meta-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="currentcolor"
+                  >
+                    <path
+                      d="M334.23-256.54q-97.44 0-165.83-67.81-68.4-67.8-68.4-165.07t68.4-165.27q68.39-68 165.83-68h359.62q69.23 0 117.69 48.08Q860-626.54 860-557.31q0 69.23-48.46 117.31t-117.69 48.08H353.46q-40.61 0-69.34-28.3-28.73-28.29-28.73-68.96 0-40.67 28.53-69.4 28.53-28.73 69.54-28.73h321.15q12.75 0 21.38 8.63 8.62 8.63 8.62 21.39 0 12.75-8.62 21.37-8.63 8.61-21.38 8.61H353.46q-16.08 0-27.08 10.81t-11 26.88q0 16.08 11 26.89 11 10.81 27.08 10.81h340.77q44.31-.62 75.04-30.78Q800-512.86 800-557.31q0-44.26-30.92-74.82-30.93-30.56-75.23-30.56H334.23q-72.54-.62-123.38 50.15Q160-561.77 160-489.28q0 71.46 50.85 121.49 50.84 50.02 123.38 51.25h340.38q12.75 0 21.38 8.63 8.62 8.63 8.62 21.38 0 12.76-8.62 21.38-8.63 8.61-21.38 8.61H334.23Z"
+                    />
+                  </svg>
+                  14
+                </div>
+              </div>
+            </div>
+            <div class="priority low">Low Priority</div>
+          </div>
+        </div>
+
+        <div class="board" id="boards" style="display: none">
+          <div class="column">
+            <div class="column-header">
+              <span class="column-title">Backlog</span>
+              <span>•••</span>
+            </div>
+            <div class="card">
+              <div class="card-priority">⭕ High</div>
+              <div class="card-title">Copywriting Content</div>
+              <div class="card-meta">
+                <div class="assigned-users">
+                  <div class="user-avatar"></div>
+                  <div class="user-avatar"></div>
+                </div>
+                <span>🗨️ 8</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="column-header">
+              <span class="column-title">To Do</span>
+              <span>•••</span>
+            </div>
+            <div class="card">
+              <div class="card-priority">⭕ High</div>
+              <div class="card-title">UI Design Implementation</div>
+              <div class="card-meta">
+                <div class="assigned-users">
+                  <div class="user-avatar"></div>
+                </div>
+                <span>🗨️ 12</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="column-header">
+              <span class="column-title">In Progress</span>
+              <span>•••</span>
+            </div>
+            <div class="card">
+              <div class="card-title">Content Creation</div>
+              <div class="card-meta">
+                <div class="assigned-users">
+                  <div class="user-avatar"></div>
+                </div>
+                <span>🗨️ 5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="column-header">
+              <span class="column-title">Needs Review</span>
+              <span>•••</span>
+            </div>
+            <div class="card">
+              <div class="card-priority">⭕ High</div>
+              <div class="card-title">Information Architecture</div>
+              <div class="card-meta">
+                <div class="assigned-users">
+                  <div class="user-avatar"></div>
+                  <div class="user-avatar"></div>
+                </div>
+                <span>🗨️ 36</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const listView = document.getElementById("list-view");
+      const boardView = document.getElementById("board-view");
+
+      listView.addEventListener("click", () => {
+        document.getElementById("tasks").style.display = "block";
+        document.getElementById("boards").style.display = "none";
+      });
+
+      boardView.addEventListener("click", () => {
+        document.getElementById("tasks").style.display = "none";
+        document.getElementById("boards").style.display = "block";
+      });
+    </script>
     <script src="js/header.js"></script>
     <script src="js/main.js" type="module"></script>
     <script src="js/dynamicValues.js"></script>
-</body>
+  </body>
 </html>
