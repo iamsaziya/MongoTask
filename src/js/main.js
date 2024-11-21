@@ -182,3 +182,13 @@ if (paths.DASHBOARD || paths.HOME) {
   });
   document.body.innerHTML = result;
 }
+
+const projectId = window.location.pathname.split("/").pop();
+const data = await fetch(`/projects/detail/${projectId}`, { method: "GET" });
+const res = await data.json();
+console.log(res);
+const templateEngine = new TemplateEngine();
+const result = templateEngine.process(document.body.innerHTML, {
+  project: res.data[0],
+});
+document.body.innerHTML = result;

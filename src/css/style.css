@@ -32,10 +32,7 @@ body {
 }
 
 /* login styles Start */
-.header {
-  padding: 2.5rem 5rem;
-  background-color: beige;
-}
+
 
 .header h1 {
   font-size: 3rem;
@@ -786,23 +783,16 @@ body {
 }
 
 .project-title {
-  font-size: 2rem;
+  font-size: 2.6rem;
   font-weight: 600;
   color: #333;
+  text-transform: capitalize;
 }
 
-.visibility-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: #666;
-  font-size: 1.4rem;
-}
+
 
 .project-meta {
-  display: flex;
-  align-items: center;
-  gap: 2.4rem;
+  line-height: 5rem;
   margin-bottom: 2.4rem;
 }
 
@@ -814,9 +804,14 @@ body {
   font-size: 1.4rem;
 }
 
+.meta-item .date{
+  margin-left: 5.3rem;
+}
+
 .assigned-users {
   display: flex;
-  align-items: center;
+  margin-left: 4rem; 
+  
 }
 
 .user-avatar {
@@ -867,7 +862,7 @@ body {
   font-size: 1.5rem;
   gap: 2.4rem;
   border-bottom: 0.1rem solid #dee2e6;
-  margin-bottom: 2.4rem;
+  margin-bottom: 1rem;
 }
 
 .nav-item {
@@ -875,6 +870,10 @@ body {
   color: #495057;
   cursor: pointer;
   position: relative;
+  display: flex;
+  gap:0.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-item.active {
@@ -950,7 +949,10 @@ body {
   cursor: pointer;
   float: right;
   position: absolute;
-
+  display: flex;  
+  gap:0.5rem;
+  align-items: center;
+  justify-content: center;
   right: 3.6rem;
 
 }
@@ -992,7 +994,7 @@ body {
   color: white;
 }
 
-.INPROGRESS {
+.INPRORESS {
   background-color: #f5a623;
   color: white;
 }
@@ -1422,7 +1424,82 @@ tr:hover {
 
 /* calender styles end */
 
+/* task list start */
+.task-list {
+  width: 100%;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  background-color: #e7e6e6;
+}
 
+.task-item {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.task-meta {
+  display: flex;
+  gap: 16px;
+  color: #666;
+  font-size: 13px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-item svg {
+  color: #666;
+}
+
+.priority {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-weight: 500;
+}
+
+.priority.high {
+  background: #FFE2E2;
+  color: #FF4D4D;
+}
+
+.priority.medium {
+  background: #E8E5FF;
+  color: #6558F5;
+}
+
+.priority.low {
+  background: #E2F5EA;
+  color: #27AE60;
+}
+
+/* Hover effect */
+.task-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* task list end */
 
 /* Responsive Design */
 @media (max-width: 991px) {
