@@ -22,7 +22,7 @@ router.get("/:projectId", (req, res) => {
   res.sendFile(path.join(__dirname, "../src/project-details.html")); // Adjust the path as necessary
 });
 router.get(
-  "/api/:projectId",
+  "/detail/:projectId",
   async (req, res) => await getProjectByProjectId(req, res)
 );
 
