@@ -171,7 +171,7 @@ if (paths.DASHBOARD || paths.HOME) {
     }
   });
 }
-if (paths.DASHBOARD) {
+if (paths.DASHBOARD || paths.HOME) {
   // get method to get all projects from /projects
   const data = await fetch("/projects/api/123", { method: "GET" });
   const res = await data.json();
