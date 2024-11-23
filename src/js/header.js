@@ -127,6 +127,7 @@ const setHeader = () => {
 window.addEventListener("scroll", () => {
   let currentScroll = window.scrollY;
   let isFilter = document.querySelector("#header").getAttribute("data-filter");
+  let isNavigation = document.querySelector("#navTabs")
   if (isFilter) {
     if (currentScroll > 100) {
       // Scrolling down
@@ -134,8 +135,16 @@ window.addEventListener("scroll", () => {
     } else {
       // Scrolling up
       document.getElementById("filter").classList.remove("hidden");
-    }
+    }  
     lastScroll = currentScroll;
+  }
+
+  if (currentScroll > 190) {
+    // Scrolling down
+    document.getElementById("navTabs").classList.add("fixed");
+  } else {
+    // Scrolling up
+    document.getElementById("navTabs").classList.remove("fixed");
   }
 });
 // Initialize UI for sidebar and header
