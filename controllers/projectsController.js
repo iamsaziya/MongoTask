@@ -28,7 +28,7 @@ const getProjectByProjectId = async (req, res) => {
     const projectData = await getProjectById(projectId);
     console.log("Project data:", projectId);
     if (projectData.length > 0) {
-      res.status(200).json({ success: true, data: projectData });
+      res.status(200).json({ success: true, data: projectData[0] });
     } else {
       res.status(404).json({ success: false, message: "Project not found" });
     }

@@ -189,6 +189,6 @@ const res = await data.json();
 console.log(res);
 const templateEngine = new TemplateEngine();
 const result = templateEngine.process(document.body.innerHTML, {
-  project: res.data[0],
+  project: res.data,
 });
 document.body.innerHTML = result;
