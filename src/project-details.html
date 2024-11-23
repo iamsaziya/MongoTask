@@ -38,7 +38,7 @@
             <div class="user-avatar"></div>
             <div class="user-avatar"></div>
             <div class="user-avatar"></div>
-            <div class="add-user">+</div>
+            <div class="add-user" onclick="showModal()">+</div>
           </div>
         </div>
         <div class="meta-item">
@@ -93,10 +93,11 @@
       <!-- Task List -->
       <div class="task-list" id="tasks">
         <!-- Task 1 -->
+        @foreach task in project.tasks
         <div class="task-item">
           <div class="task-content">
             <div class="task-title">
-              Schedule me an appointment with my endocrinologist
+              {{task.name}}
             </div>
             <div class="task-meta">
               <div class="meta-item">
@@ -104,7 +105,7 @@
                   <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                   <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
                 </svg>
-                15 Days left
+                <span class="deadline">{{task.deadline}}</span>
               </div>
               <div class="meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
@@ -112,14 +113,14 @@
                   <path
                     d="M334.23-256.54q-97.44 0-165.83-67.81-68.4-67.8-68.4-165.07t68.4-165.27q68.39-68 165.83-68h359.62q69.23 0 117.69 48.08Q860-626.54 860-557.31q0 69.23-48.46 117.31t-117.69 48.08H353.46q-40.61 0-69.34-28.3-28.73-28.29-28.73-68.96 0-40.67 28.53-69.4 28.53-28.73 69.54-28.73h321.15q12.75 0 21.38 8.63 8.62 8.63 8.62 21.39 0 12.75-8.62 21.37-8.63 8.61-21.38 8.61H353.46q-16.08 0-27.08 10.81t-11 26.88q0 16.08 11 26.89 11 10.81 27.08 10.81h340.77q44.31-.62 75.04-30.78Q800-512.86 800-557.31q0-44.26-30.92-74.82-30.93-30.56-75.23-30.56H334.23q-72.54-.62-123.38 50.15Q160-561.77 160-489.28q0 71.46 50.85 121.49 50.84 50.02 123.38 51.25h340.38q12.75 0 21.38 8.63 8.62 8.63 8.62 21.38 0 12.76-8.62 21.38-8.63 8.61-21.38 8.61H334.23Z" />
                 </svg>
-                6
+                {{task.attachments.length}}
               </div>
             </div>
           </div>
-          <div class="priority high">High Priority</div>
+          <div class="priority high {{task.priority}}">{{task.priority}}</div>
         </div>
-
-        <!-- Task 2 -->
+        @end
+        <!--  
         <div class="task-item">
           <div class="task-content">
             <div class="task-title">Help DStudio get more customers</div>
@@ -144,7 +145,6 @@
           <div class="priority medium">Medium Priority</div>
         </div>
 
-        <!-- Task 3 -->
         <div class="task-item">
           <div class="task-content">
             <div class="task-title">Design team meeting</div>
@@ -168,7 +168,7 @@
             </div>
           </div>
           <div class="priority low">Low Priority</div>
-        </div>
+        </div> -->
       </div>
 
       <!-- Board View -->
@@ -491,6 +491,34 @@
       </div>
 
     </div>
+    <div id="modal">
+      <div id="modal_content" style="height:auto">
+        <div id="modal_header">
+          <div>
+            <h3>Add People to your project</h3>
+          </div>
+
+          <span class="close_btn" onclick="hideModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+              fill="undefined">
+              <path
+                d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
+            </svg>
+          </span>
+        </div>
+        <div id="modal_body">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required placeholder="Email" />
+            <small>We'll sent them invitation via email</small>
+          </div>
+        </div>
+        <div id="modal_footer">
+          <button onclick="hideModal()" class="discard_btn">Discard</button>
+          <button id="create_btn" onclick="hideModal()">Invite</button>
+        </div>
+      </div>
+    </div>
   </main>
 
 
@@ -498,6 +526,7 @@
   <script src="js/main.js" type="module"></script>
   <script src="js/dynamicValues.js"></script>
   <script src="js/Sortable.min.js"></script>
+  <script src="js/moment.min.js"></script>
   <script>
     function showListView() {
       document.getElementById('list-view').classList.add('active');
@@ -516,7 +545,7 @@
     // Wait for the DOM to be fully loaded
     // Event handlers
 
-    const columns = document.querySelectorAll('.board-card');
+    const columns = document.querySelectorAll('.board-wrapper');
     columns.forEach((column) => {
       Sortable.create(column, {
         group: 'shared',
@@ -613,7 +642,15 @@
 
     loadState()
   </script>
-
+  <script>
+    function showModal() {
+      document.getElementById("modal").style.display = "flex";
+    }
+    function hideModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+   
+  </script>
 </body>
 
 </html>

@@ -706,7 +706,7 @@ button:disabled:hover {
   border-radius: 0.8rem;
   height: 50rem;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #modal_header {

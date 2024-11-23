@@ -189,6 +189,9 @@ const res = await data.json();
 console.log(res);
 const templateEngine = new TemplateEngine();
 const result = templateEngine.process(document.body.innerHTML, {
-  project: { ...res.data, deadline: new Date(res.data.deadline).toLocaleString() }
+  project: {
+    ...res.data,
+    deadline: new Date(res.data.deadline).toLocaleString()
+  }
 });
 document.body.innerHTML = result;
