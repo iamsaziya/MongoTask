@@ -110,7 +110,7 @@
       </div>
       <div id="modal_footer">
         <button onclick="hideModal()" class="discard_btn">Discard</button>
-        <button id="create_btn" onclick="createProject()">Create</button>
+        <button id="create_btn" onclick="createProject(event)">Create</button>
       </div>
     </div>
   </div>
@@ -127,13 +127,13 @@
     }
     // create new project functionality
     const createButton = document.getElementById("create_btn");
-    const createProject = () => {
+    const createProject = (e) => {
       // make post request to /projects/create
       // add spinner in button
       console.log(createButton)
-      createButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Creating...';
+      e.target.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Creating...';
       // disable create button while creating
-      createButton.disabled = true;
+      e.tartet.disabled = true;
       fetch('/projects/create', {
         method: 'POST',
         headers: {
@@ -148,12 +148,12 @@
       }).then(response => response.json())
         .then(data => {
           console.log(data);
-          createButton.innerHTML = 'Create';
+          e.innerHTML = 'Create';
           // disable create button while creating
-          createButton.disabled = false;
+          e.disabled = false;
           // refresh page to see new project
           hideModal();
-          // location.reload();
+          location.reload();
         });
     };
   </script>

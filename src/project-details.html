@@ -538,14 +538,12 @@
 
       // Store the state as a JSON string in localStorage
       localStorage.setItem('boardState', JSON.stringify(state));
-      console.log('State saved:', state);
     }
 
     function loadState() {
       const state = JSON.parse(localStorage.getItem('boardState'));
 
       if (state) {
-        console.log('Loading state:', state);
 
         // Loop through each saved drop zone
         Object.entries(state).forEach(([zoneIndex, cardIds]) => {
@@ -563,36 +561,32 @@
     }
 
     function dragStartHandler(e) {
-      console.log('Drag started', e.target.classList);
       e.target.classList.add('dragging');
       // Store the dragged element's ID or some identifier
       e.dataTransfer.setData('text/plain', e.target.id);
     }
 
     function dragEndHandler(e) {
-      console.log('Drag ended');
       e.target.classList.remove('dragging');
     }
 
     function dragOverHandler(e) {
       e.preventDefault(); // Necessary to allow dropping
-      console.log('Dragging over dropzone');
     }
 
     function dragEnterHandler(e) {
       e.preventDefault(); // Necessary to allow drop
-      console.log('Entered dropzone');
-      e.target.classList.add('drag-over');
+      if (e.target.classList.value.includes("dropzone")) {
+        e.target.classList.add('drag-over');
+      }
     }
 
     function dragLeaveHandler(e) {
-      console.log('Left dropzone');
       e.target.classList.remove('drag-over');
     }
 
     function dropHandler(e) {
       e.preventDefault();
-      console.log('Drop event triggered');
       saveState();
       if (e.target.length <= 0) {
         e.target.innerHTML = `<div class="empty-message">No cards available</div>`
@@ -609,7 +603,7 @@
         const dropzone = e.target;
 
         // Only move if it's a different dropzone
-        if (dropzone !== draggedCard.parentNode) {
+        if (dropzone !== draggedCard.parentNode && dropzone.classList?.value.includes("dropzone")) {
           // Move the card to the new dropzone
           dropzone.appendChild(draggedCard);
         }
