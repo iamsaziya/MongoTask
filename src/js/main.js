@@ -18,12 +18,12 @@ if (paths.LOGIN) {
       const response = await fetch("/users/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           email: email,
-          password: password,
-        }),
+          password: password
+        })
       });
 
       if (response.ok) {
@@ -63,13 +63,13 @@ if (paths.SIGNUP) {
         const response = await fetch("/users/signup", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             email: email,
             password: password,
-            name: name,
-          }),
+            name: name
+          })
         });
 
         if (response.success) {
@@ -147,15 +147,15 @@ if (paths.DASHBOARD || paths.HOME) {
       const response = await fetch("/tasks", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           name: taskName,
           description,
           deadline: new Date(deadline),
           priority,
-          status,
-        }),
+          status
+        })
       });
 
       if (response.ok) {
@@ -178,7 +178,7 @@ if (paths.DASHBOARD || paths.HOME) {
   const templateEngine = new TemplateEngine();
   // Process template
   const result = templateEngine.process(document.body.innerHTML, {
-    projects: res.data,
+    projects: res.data
   });
   document.body.innerHTML = result;
 }
@@ -189,6 +189,6 @@ const res = await data.json();
 console.log(res);
 const templateEngine = new TemplateEngine();
 const result = templateEngine.process(document.body.innerHTML, {
-  project: res.data,
+  project: { ...res.data, deadline: new Date(res.data.deadline).toLocaleString() }
 });
 document.body.innerHTML = result;

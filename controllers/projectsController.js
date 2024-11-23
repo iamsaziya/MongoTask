@@ -3,7 +3,10 @@ const {
   getProjectById,
   getProjects
 } = require("../lib/db.js");
+const crypto = require("crypto");
 const saveProject = async (req, res) => {
+  req.body.projectId = crypto.randomUUID().toString();
+  req.body.userId = "123";
   const project = req.body;
   try {
     const resFromController = await saveProjectToDb(project);
@@ -22,7 +25,7 @@ const saveProject = async (req, res) => {
 
 const getProjectByProjectId = async (req, res) => {
   const projectId = req.params.projectId;
-  console.log("Project id:",  req.params);
+  console.log("Project id:", req.params);
 
   try {
     const projectData = await getProjectById(projectId);

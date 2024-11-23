@@ -38,11 +38,11 @@ const setSideBar = () => {
         </nav>
       </aside>
     </header>
-    `
-}
+    `;
+};
 
 const setHeader = () => {
-  let isFilter = document.querySelector("#header").getAttribute('data-filter');
+  let isFilter = document.querySelector("#header").getAttribute("data-filter");
   let html = `<nav>
         <div class="nav">
           <h2><a href="index.html">MongoTask</a></h2>
@@ -83,7 +83,7 @@ const setHeader = () => {
             </li>
           </ul>
         </div>
-      `
+      `;
   if (isFilter) {
     html += `<div id="filter" class="task_filter">
           <div class="form_group">
@@ -115,27 +115,29 @@ const setHeader = () => {
             </select>
             
           </div>
-        </div>`
+        </div>`;
 
-    html += "</nav>"
+    html += "</nav>";
   }
 
-  html += "</nav>"
+  html += "</nav>";
   document.getElementById("header").innerHTML = html;
-}
+};
 
 window.addEventListener("scroll", () => {
   let currentScroll = window.scrollY;
-
-  if (currentScroll > 100) {
-    // Scrolling down
-    document.getElementById("filter").classList.add("hidden");
-  } else {
-    // Scrolling up
-    document.getElementById("filter").classList.remove("hidden");
+  let isFilter = document.querySelector("#header").getAttribute("data-filter");
+  if (isFilter) {
+    if (currentScroll > 100) {
+      // Scrolling down
+      document.getElementById("filter").classList.add("hidden");
+    } else {
+      // Scrolling up
+      document.getElementById("filter").classList.remove("hidden");
+    }
+    lastScroll = currentScroll;
   }
-  lastScroll = currentScroll;
 });
 // Initialize UI for sidebar and header
-setSideBar()
-setHeader()
+setSideBar();
+setHeader();

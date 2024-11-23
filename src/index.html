@@ -126,10 +126,11 @@
       document.getElementById("modal").style.display = "none";
     }
     // create new project functionality
-    const createButton = document.querySelector("#create_btn");
+    const createButton = document.getElementById("create_btn");
     const createProject = () => {
       // make post request to /projects/create
       // add spinner in button
+      console.log(createButton)
       createButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Creating...';
       // disable create button while creating
       createButton.disabled = true;
