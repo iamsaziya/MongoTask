@@ -142,9 +142,11 @@ window.addEventListener("scroll", () => {
   if (currentScroll > 190) {
     // Scrolling down
     document.getElementById("navTabs").classList.add("fixed");
+    // document.querySelector(".drawer").classList.add("fixed");
   } else {
     // Scrolling up
     document.getElementById("navTabs").classList.remove("fixed");
+    // document.querySelector(".drawer").classList.remove("fixed");
   }
 });
 // Initialize UI for sidebar and header

@@ -30,6 +30,7 @@ body {
   display: flex;
   position: relative;
   /* gap: 2rem; */
+  overflow-x: hidden;
 }
 
 /* login styles Start */
@@ -1788,8 +1789,39 @@ tr:hover {
   width: 100%;
   max-width: 51rem;
   margin: 2rem auto;
-  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.05);
   display: none;
+  position: fixed;
+  top: 0;
+  z-index: 9999999;
+  height: 100vh;
+  margin-top: 0;
+  right: 0.1rem;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0.1rem;
+  }
+}
+
+
+.closeAnimation {
+  animation: slideOut 1s ease;
+}
+
+@keyframes slideOut {
+  from {
+    right: 0.1rem;
+  }
+  to {
+    right: -100%;
+    display: none;
+  }
 }
 
 .drawer-header {
@@ -1821,18 +1853,41 @@ tr:hover {
   background: #fde5e5;
   color: #b60d0d;
   padding: 0.4rem 1rem;
-  border-radius: 0.4rem;
+  border-radius: 10rem;
   font-size: 1.2rem;
   display: inline-block;
   margin: 1rem 0;
 }
 
 .time-spent {
-  color: #666;
+  color: #383838;
   font-size: 1.2rem;
-  display: flex;
+  gap: 0.3rem;
+  background: #f0f0f0;
+  padding: 0.4rem 1rem;
+  border-radius: 10rem;
+  font-size: 1.2rem;
+  display: inline-block;
+  margin: 1rem 0;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  display: flex;
+}
+
+.size-tag{
+  color: #383838;
+  font-size: 1.2rem;
+  gap: 0.3rem;
+  background: #f0f0f0;
+  padding: 0.4rem 1rem;
+  border-radius: 10rem;
+  font-size: 1.2rem;
+  display: inline-block;
+  margin: 1rem 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 2.3rem;
 }
 
 .drawer-body {
