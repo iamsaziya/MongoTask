@@ -80,11 +80,9 @@
           </svg>Board
         </div>
 
-        <button class="add-task-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-            fill="currentcolor">
-            <path
-              d="M450-450H250q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q237.25-510 250-510h200v-200q0-12.75 8.63-21.37 8.63-8.63 21.38-8.63 12.76 0 21.37 8.63Q510-722.75 510-710v200h200q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q722.75-450 710-450H510v200q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Q450-237.25 450-250v-200Z" />
+        <button class="add-task-btn" onclick="showAddTaskModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor">
+            <path d="M450-450H250q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q237.25-510 250-510h200v-200q0-12.75 8.63-21.37 8.63-8.63 21.38-8.63 12.76 0 21.37 8.63Q510-722.75 510-710v200h200q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q722.75-450 710-450H510v200q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Q450-237.25 450-250v-200Z"/>
           </svg>
           Add new task
         </button>
@@ -95,7 +93,7 @@
       <div class="task-list" id="tasks">
         <!-- Task 1 -->
         @foreach task in project.tasks
-        <div class="task-item" onclick="openDrawer()">
+        <div class="task-item" onclick="showTaskData(`{{task}}`)">
           <div class="task-content">
             <div class="task-title">
               {{task.name}}
@@ -121,55 +119,6 @@
           <div class="priority high {{task.priority}}">{{task.priority}}</div>
         </div>
         @end
-        <!--  
-        <div class="task-item">
-          <div class="task-content">
-            <div class="task-title">Help DStudio get more customers</div>
-            <div class="task-meta">
-              <div class="meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
-                </svg>
-                15 Days left
-              </div>
-              <div class="meta-item">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                  fill="currentcolor">
-                  <path
-                    d="M334.23-256.54q-97.44 0-165.83-67.81-68.4-67.8-68.4-165.07t68.4-165.27q68.39-68 165.83-68h359.62q69.23 0 117.69 48.08Q860-626.54 860-557.31q0 69.23-48.46 117.31t-117.69 48.08H353.46q-40.61 0-69.34-28.3-28.73-28.29-28.73-68.96 0-40.67 28.53-69.4 28.53-28.73 69.54-28.73h321.15q12.75 0 21.38 8.63 8.62 8.63 8.62 21.39 0 12.75-8.62 21.37-8.63 8.61-21.38 8.61H353.46q-16.08 0-27.08 10.81t-11 26.88q0 16.08 11 26.89 11 10.81 27.08 10.81h340.77q44.31-.62 75.04-30.78Q800-512.86 800-557.31q0-44.26-30.92-74.82-30.93-30.56-75.23-30.56H334.23q-72.54-.62-123.38 50.15Q160-561.77 160-489.28q0 71.46 50.85 121.49 50.84 50.02 123.38 51.25h340.38q12.75 0 21.38 8.63 8.62 8.63 8.62 21.38 0 12.76-8.62 21.38-8.63 8.61-21.38 8.61H334.23Z" />
-                </svg>
-                25
-              </div>
-            </div>
-          </div>
-          <div class="priority medium">Medium Priority</div>
-        </div>
-
-        <div class="task-item">
-          <div class="task-content">
-            <div class="task-title">Design team meeting</div>
-            <div class="task-meta">
-              <div class="meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
-                </svg>
-                20 Days left
-              </div>
-
-              <div class="meta-item">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                  fill="currentcolor">
-                  <path
-                    d="M334.23-256.54q-97.44 0-165.83-67.81-68.4-67.8-68.4-165.07t68.4-165.27q68.39-68 165.83-68h359.62q69.23 0 117.69 48.08Q860-626.54 860-557.31q0 69.23-48.46 117.31t-117.69 48.08H353.46q-40.61 0-69.34-28.3-28.73-28.29-28.73-68.96 0-40.67 28.53-69.4 28.53-28.73 69.54-28.73h321.15q12.75 0 21.38 8.63 8.62 8.63 8.62 21.39 0 12.75-8.62 21.37-8.63 8.61-21.38 8.61H353.46q-16.08 0-27.08 10.81t-11 26.88q0 16.08 11 26.89 11 10.81 27.08 10.81h340.77q44.31-.62 75.04-30.78Q800-512.86 800-557.31q0-44.26-30.92-74.82-30.93-30.56-75.23-30.56H334.23q-72.54-.62-123.38 50.15Q160-561.77 160-489.28q0 71.46 50.85 121.49 50.84 50.02 123.38 51.25h340.38q12.75 0 21.38 8.63 8.62 8.63 8.62 21.38 0 12.76-8.62 21.38-8.63 8.61-21.38 8.61H334.23Z" />
-                </svg>
-                14
-              </div>
-            </div>
-          </div>
-          <div class="priority low">Low Priority</div>
-        </div> -->
       </div>
 
       <!-- Board View -->
@@ -446,70 +395,43 @@
               </svg></button>
           </div>
 
-          <h1 class="drawer-title">Schedule Me An Appointment With My Endocrinologist</h1>
+          <h1 class="drawer-title" id="name">Schedule Me An Appointment With My Endocrinologist</h1>
           <div style="display: flex;align-items: center;gap:1rem;">
-            <div class="priority-tag">High Priority</div>
+            <div class="priority-tag">Critical</div>
             <div class="time-spent">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-              Nov 25
+              <span id="date">Nov 25</span>
             </div>
-            <div class="size-tag"> Size: Medium</div>
+            <div class="size-tag"> Size: <span id="size">Medium</span></div>
           </div>
 
         </div>
         <div class="drawer-body">
           <div class="description">
             <h3>Description</h3>
-            <p>Specializes in the diagnosis and treatment of diseases related to the endocrine system, which includes
-              glands and organs that produce hormones.</p>
-            <p>These hormones regulate various bodily functions such as metabolism, growth, and reproduction.</p>
+            <p id="description" >Specializes in the diagnosis and treatment of diseases related to the endocrine system, which includes
+              glands and organs that produce hormones. <br> These hormones regulate various bodily functions such as metabolism, growth, and reproduction.</p>
+           
           </div>
           <div class="attachments">
             <h3>Attachments</h3>
-            <div class="drawer-attachment">
-              <div class="attachment-icon red">📄</div>
-              <div class="attachment-details">
-                <div class="attachment-name">Medical Prescription.docx</div>
-                <div class="attachment-date">12:35 PM, 22 August</div>
-              </div>
-              <div class="attachment-actions">
-                <a href="#" class="attachment-action">View</a>
-                <a href="#" class="attachment-action">Download</a>
-              </div>
-            </div>
-            <div class="drawer-attachment">
-              <div class="attachment-icon purple">📄</div>
-              <div class="attachment-details">
-                <div class="attachment-name">Doctor Appointment.pdf</div>
-                <div class="attachment-date">12:35 PM, 22 August</div>
-              </div>
-              <div class="attachment-actions">
-                <a href="#" class="attachment-action">View</a>
-                <a href="#" class="attachment-action">Download</a>
-              </div>
-            </div>
+            <div class="drawer-attachment" id="attachment"></div>
           </div>
         </div>
       </div>
 
     </div>
-    <div id="modal">
+    <!-- <div id="modal">
       <div id="modal_content" style="height:auto">
         <div id="modal_header">
           <div>
             <h3>Add People to your project</h3>
           </div>
 
-          <span class="close_btn" onclick="hideModal()">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-              fill="undefined">
-              <path
-                d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
-            </svg>
-          </span>
+          
         </div>
         <div id="modal_body">
           <div>
@@ -523,8 +445,230 @@
           <button id="create_btn" onclick="hideModal()">Invite</button>
         </div>
       </div>
+    </div> -->
+    
+    <!-- Invitation Modal -->
+    <div class="invitation-modal" style="display: none;">
+      <div class="invitation-container">
+        <div class="invitation-header">
+          <div class="invitation-title">
+            <h2>Invite People</h2>
+            <p>Invite your team to review collaborate on this project.</p>
+          </div>
+          <div class="invitation-illustration">
+            <img src="assests/undraw_mailbox_re_dvds.svg" alt="Invitation illustration">
+          </div>
+        </div>
+    
+        <div class="invitation-body">
+          <div class="invitation-email-section">
+            <label>Email an invite</label>
+            <div class="invitation-input-group">
+              <input type="email" class="invitation-email-input" placeholder="Enter email">
+              <button class="invitation-submit-btn">Send Invite</button>
+            </div>
+          </div>
+    
+          <div class="invitation-sharing-options">
+            <button class="invitation-share-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M10 15L20 5M10 5H20V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Copy Link
+            </button>
+           
+          </div>
+        </div>
+      </div>
     </div>
+    
+    
+<!-- Add Task Modal -->
+<div class="add-task-modal" style="display: none;">
+  <div class="add-task-container">
+    <div class="add-task-header">
+      <h2>Add New Task</h2>
+      <button class="close-modal" onclick="hideAddTaskModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/>
+        </svg>
+      </button>
+    </div>
+
+    <form class="add-task-form" onsubmit="handleAddTask(event)">
+      <div class="form-group">
+        <label for="taskName">Task Name*</label>
+        <input type="text" id="taskName" name="taskName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="taskDescription">Description*</label>
+        <textarea id="taskDescription" name="taskDescription" minlength="10" required></textarea>
+        <small>Minimum 10 characters required</small>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="taskPriority">Priority*</label>
+          <select id="taskPriority" name="taskPriority" required>
+            <option value="">Select Priority</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="taskSize">Size*</label>
+          <select id="taskSize" name="taskSize" required>
+            <option value="">Select Size</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Attachments (Max 5 files)</label>
+        <div class="file-drop-zone" id="fileDropZone">
+          <div class="drop-zone-content">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+              <path d="M12 12v9"></path>
+              <path d="m16 16-4-4-4 4"></path>
+            </svg>
+            <p>Drag and drop files here or <span class="browse-link">browse</span></p>
+            <input type="file" id="fileInput" multiple accept="image/*,.pdf,.doc,.docx" style="display: none;">
+          </div>
+          <div class="file-preview" id="filePreview"></div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" onclick="hideAddTaskModal()">Cancel</button>
+        <button type="submit" class="btn-primary">Create Task</button>
+      </div>
+    </form>
+  </div>
+</div>
+    
+
   </main>
+
+  <script>
+    // Show/Hide Modal
+function showAddTaskModal() {
+  document.querySelector('.add-task-modal').style.display = 'flex';
+}
+
+function hideAddTaskModal() {
+  document.querySelector('.add-task-modal').style.display = 'none';
+  resetForm();
+}
+
+// File Upload Handling
+const dropZone = document.getElementById('fileDropZone');
+const fileInput = document.getElementById('fileInput');
+const filePreview = document.getElementById('filePreview');
+const MAX_FILES = 5;
+let files = [];
+
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.classList.add('drag-over');
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.classList.remove('drag-over');
+});
+
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  const newFiles = Array.from(e.dataTransfer.files);
+  handleFiles(newFiles);
+});
+
+document.querySelector('.browse-link').addEventListener('click', () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener('change', (e) => {
+  const newFiles = Array.from(e.target.files);
+  handleFiles(newFiles);
+});
+
+function handleFiles(newFiles) {
+  if (files.length + newFiles.length > MAX_FILES) {
+    alert(`Maximum ${MAX_FILES} files allowed`);
+    return;
+  }
+
+  newFiles.forEach(file => {
+    if (file.type.startsWith('image/') || 
+        file.type === 'application/pdf' || 
+        file.type === 'application/msword' || 
+        file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+      files.push(file);
+      displayFile(file);
+    }
+  });
+}
+
+function displayFile(file) {
+  const div = document.createElement('div');
+  div.className = 'file-preview-item';
+  
+  if (file.type.startsWith('image/')) {
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    div.appendChild(img);
+  } else {
+    div.textContent = file.name;
+  }
+
+  const removeBtn = document.createElement('button');
+  removeBtn.className = 'remove-file';
+  removeBtn.innerHTML = '×';
+  removeBtn.onclick = () => removeFile(file, div);
+  
+  div.appendChild(removeBtn);
+  filePreview.appendChild(div);
+}
+
+function removeFile(file, element) {
+  files = files.filter(f => f !== file);
+  element.remove();
+}
+
+function resetForm() {
+  document.querySelector('.add-task-form').reset();
+  files = [];
+  filePreview.innerHTML = '';
+}
+
+function handleAddTask(event) {
+  event.preventDefault();
+  // Handle form submission here
+  const formData = new FormData(event.target);
+  const taskData = {
+    name: formData.get('taskName'),
+    description: formData.get('taskDescription'),
+    priority: formData.get('taskPriority'),
+    size: formData.get('taskSize'),
+    files: files
+  };
+  
+  console.log('Task Data:', taskData);
+  // Add your task creation logic here
+  
+  hideAddTaskModal();
+}
+  </script>
 
   <script src="js/header.js"></script>
   <script src="js/main.js" type="module"></script>
@@ -653,6 +797,16 @@
       setTimeout(() => {
         document.querySelector('.drawer').style.display = 'none';
       }, 1000);
+    }
+
+    function showTaskData(data){
+
+      document.getElementById('name').innerText = data?.name;
+      document.getElementById('description').innerText = data?.description;
+      document.getElementById('date').innerText = data?.date;
+      document.getElementById('size').innerText = data?.size;
+
+      openDrawer();
     }
   </script>
   <script>

@@ -26,10 +26,9 @@ const saveProject = async (req, res) => {
 const getProjectByProjectId = async (req, res) => {
   const projectId = req.params.projectId;
   console.log("Project id:", req.params);
-
   try {
     const projectData = await getProjectById(projectId);
-    console.log("Project data:", projectId);
+    console.log("Project data:", projectData[0].tasks);
     if (projectData.length > 0) {
       res.status(200).json({ success: true, data: projectData[0] });
     } else {
